@@ -10,6 +10,18 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 21:09
  */
+function GetCurUrl(){
+    $url='http://';
+    if(isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']=='on'){
+        $url='https://';
+    }
+    if($_SERVER['SERVER_PORT']!='80'){
+        $url.=$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
+    }else{
+        $url.=$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    }
+    return $url;
+}
 //状态返回404
 http_response_code(404)
 ?>
@@ -17,7 +29,7 @@ http_response_code(404)
 <html">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>系统发生错误 ┭┮﹏┭┮</title>
+    <title>青草课堂 - 系统发生错误 ┭┮﹏┭┮</title>
     <style type="text/css">
         *{ padding: 0; margin: 0; }
         html{ overflow-y: scroll; }
@@ -38,12 +50,14 @@ http_response_code(404)
 <body>
 <div class="error">
     <p class="face">:(</p>
-    <h1>页面发生错误，请联系管理员</h1>
+    <h1>页面发生错误</h1>
     <div class="content">
+        <p>错误信息：404 Not Found</p>
+        <p>页面地址：<?php echo GetCurUrl(); ?></p>
     </div>
 </div>
 <div class="copyright">
-    <p><a href="/">青草课堂</a><sup>Beta</sup> { 网络在线教育智能直播课堂解决方案 }</p>
+    <p><a title="返回首页" href="/">青草课堂</a><sup>Beta</sup> { 网络在线教育智能直播课堂解决方案 }</p>
 </div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755509-9"></script>
 <script>
