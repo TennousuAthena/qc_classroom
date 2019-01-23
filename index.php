@@ -10,5 +10,5 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 12:13
  */
-if(!file_exists("config.php")) die("站点尚未初始化，请将config.tpl.php重命名为config.php并进行配置！");
+if(!file_exists("./config.php")) die("站点尚未初始化，请将config.tpl.php重命名为config.php并进行配置！");
 include_once ("config.php");

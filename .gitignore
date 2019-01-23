@@ -86,3 +86,6 @@ fabric.properties
 .idea
 composer.lock
 *.log
+
+#配置文件
+config.php
