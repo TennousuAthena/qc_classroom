@@ -86,4 +86,3 @@ fabric.properties
 .idea
 composer.lock
 *.log
-thinkphp
