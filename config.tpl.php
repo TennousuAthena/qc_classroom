@@ -37,7 +37,6 @@ $Config["domain"]["video"]          = "";
 $Config["domain"]["live_stream"]    = "";
 $Config["domain"]["live_play"]      = "";
 
-
 // ========================//
 //        腾讯云配置         //
 // ========================//
