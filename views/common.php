@@ -35,5 +35,5 @@ class View {
 
 $view = new View();
 include_once ("head.tpl.php");
-
+include_once ("controller/".$UrlPath.".php");
 include_once ("foot.tpl.php");
