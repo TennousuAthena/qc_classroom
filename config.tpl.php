@@ -25,7 +25,6 @@ $Config["database"]["name"]        = "edu";
 //        网站配置          //
 // ========================//
 $Config["website"]["domain"]        = "";
-$Config["website"]["force_https"]    = true;
 $Config["website"]["title"]         = "青草课堂";
 $Config["website"]["subtitle"]      = "网络在线教育智能直播课堂解决方案";
 $Config["website"]["static"]        = "/assets/";
