@@ -28,7 +28,8 @@ setcookie("qc_flag", "1");
 <!-- Header -->
 <header id="header">
     <h1>青草课堂</h1>
-    <p>线上线下相结合<br />网络在线教育智能直播课堂解决方案</p>
+    <p>线上线下相结合</p>
+    <p>网络在线教育智能直播课堂解决方案</p>
 </header>
 
 <!-- Signup Form -->
