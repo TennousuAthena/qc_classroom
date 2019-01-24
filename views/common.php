@@ -59,7 +59,12 @@ class View {
 
 $view = new View();
 $view->is_debug = DEBUG;
-include_once ("head.tpl.php");
-include_once ("nav.tpl.php");
-include_once ("controller/".$UrlPath.".php");
-include_once ("foot.tpl.php");
+//部分controller不需要view
+if($UrlPath == 'show' || $UrlPath == 'callback') {
+    include_once("controller/" . $UrlPath . ".php");
+}else{
+    include_once("head.tpl.php");
+    include_once("nav.tpl.php");
+    include_once("controller/" . $UrlPath . ".php");
+    include_once("foot.tpl.php");
+}

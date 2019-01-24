@@ -44,6 +44,7 @@ $Routes = array(
  * 在括号内添加正则，<>内为页面变量名称，变量值为指向目标控制器
  */
 $Routes['GET']['/']                                                                        = 'home';
+$Routes['GET']['/sign_up']                                                                 = 'show';
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
 //这里是Routes End
 
@@ -72,6 +73,5 @@ if(!file_exists("controller/".$UrlPath.".php")){
     include_once("controller/error.php");
     die("-1");
 }
-
 //引入页面模板
-include_once ("./views/common.php");
+include_once("./views/common.php");
