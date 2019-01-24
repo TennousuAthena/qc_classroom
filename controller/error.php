@@ -5,7 +5,7 @@
  *| | | | |   | |/ _` / __/ __| '__/ _ \ / _ \| '_ ` _ \
  *| |_| | |___| | (_| \__ \__ \ | | (_) | (_) | | | | | |
  * \__\_\\____|_|\__,_|___/___/_|  \___/ \___/|_| |_| |_|
- * 青草课堂 - 404.php
+ * 青草课堂 - error.php
  * Copyright (c) 2015 - 2019.,QCTech ,All rights reserved.
  * Created by: QCTech
  * Created Time: 2019-01-23 - 21:09
@@ -22,13 +22,12 @@ function GetCurUrl(){
     }
     return $url;
 }
-//状态返回404
-http_response_code(404)
 ?>
 <!DOCTYPE html>
 <html">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>青草课堂 - 系统发生错误 ┭┮﹏┭┮</title>
     <style type="text/css">
         *{ padding: 0; margin: 0; }
