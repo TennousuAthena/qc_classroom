@@ -36,8 +36,8 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'/assets/img/class_3_6.jpg': 'center',
-							'/assets/img/bg1.png': 'center',
+							'https://assets.edu.qmcmc.cn/img/class_3_6.jpg': 'center',
+							'https://assets.edu.qmcmc.cn/img/bg1.png': 'center',
 						},
 
 					// Delay.
