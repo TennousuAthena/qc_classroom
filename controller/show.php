@@ -52,5 +52,6 @@ setcookie("qc_flag", "1");
 <!-- Scripts -->
 <?php $view->load_js("main_show.js"); ?>
 
+<?php $view->google_analytics(); ?>
 </body>
 </html>
