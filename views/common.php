@@ -11,14 +11,38 @@
  * Created Time: 2019-01-23 - 18:01
  */
 class View {
+    /**
+     * @var 是否开启随机数防缓存，方便开发
+     */
+    public $is_debug;
+
+    /**
+     * 加载js
+     * @param $filename 文件在/assets/js下的名称，包含.js
+     * @return int
+     */
     function load_js($filename){
         global $Config;
-        echo "<script src=\"".$Config["website"]["static"]."js/".$filename."\"></script>".PHP_EOL;
+        if(!$this->is_debug) {
+            echo "<script src=\"" . $Config["website"]["static"] . "js/" . $filename . "\"></script>" . PHP_EOL;
+        }else{
+            echo "<script src=\"" . $Config["website"]["static"] . "js/" . $filename . "?" . rand(1000000,9999999) . "\"></script>" . PHP_EOL;
+        }
         return 0;
     }
+
+    /**
+     * 加载css
+     * @param $filename 文件在/assets/css下的名称，包含.css
+     * @return int
+     */
     function load_css($filename){
         global $Config;
-        echo "<link rel=\"stylesheet\" href=\"".$Config["website"]["static"]."css/".$filename."\" type=\"text/css\" media=\"all\" />".PHP_EOL;
+        if(!$this->is_debug) {
+            echo "<link rel=\"stylesheet\" href=\"" . $Config["website"]["static"] . "css/" . $filename . "\" type=\"text/css\" media=\"all\" />" . PHP_EOL;
+        }else{
+            echo "<link rel=\"stylesheet\" href=\"" . $Config["website"]["static"] . "css/" . $filename . "?" . rand(1000000,9999999) ."\" type=\"text/css\" media=\"all\" />" . PHP_EOL;
+        }
         return 0;
     }
     function google_analytics($gid="UA-100755509-9"){
@@ -34,6 +58,8 @@ class View {
 }
 
 $view = new View();
+$view->is_debug = DEBUG;
 include_once ("head.tpl.php");
+include_once ("nav.tpl.php");
 include_once ("controller/".$UrlPath.".php");
 include_once ("foot.tpl.php");
