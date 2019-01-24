@@ -10,6 +10,7 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 12:13
  */
+DEFINE("DEBUG", true);   //是否开启调试模式，建议不在生产环境中启用
 // 引入配置文件
 if(!file_exists("./config.php")) die("站点尚未初始化，请将config.tpl.php重命名为config.php并进行配置！");
 include_once ("config.php");
@@ -35,11 +36,18 @@ $Routes = array(
     'GET' => array(),
     'POST' => array()
 );
+
+
 //Support HTTP Method: GET / POST
-//这里是Routes Start
+/*
+ * $Routes的第一维存放请求类型，第二维存放路径
+ * 在括号内添加正则，<>内为页面变量名称，变量值为指向目标控制器
+ */
 $Routes['GET']['/']                                                                        = 'home';
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
 //这里是Routes End
+
+
 $UrlPath = 'home';
 $ParametersVariableName = '_' . $_SERVER['REQUEST_METHOD'];
 foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
@@ -57,8 +65,12 @@ foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
     }
 }
 if ($NotFound === true) {
-    include_once ("controller/404.php");
+    include_once("controller/error.php");
     die();
+}
+if(!file_exists("controller/".$UrlPath.".php")){
+    include_once("controller/error.php");
+    die("-1");
 }
 
 //引入页面模板
