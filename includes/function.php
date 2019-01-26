@@ -10,6 +10,8 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 18:26
  */
+//引入类
+require_once ("class.php");
 /**
  * 获取用户真实ip
  * @return bool

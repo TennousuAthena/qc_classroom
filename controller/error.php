@@ -32,7 +32,7 @@ function GetCurUrl(){
     <style type="text/css">
         *{ padding: 0; margin: 0; }
         html{ overflow-y: scroll; }
-        body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+        body{ background: #fff; color: #333; font-size: 16px; }
         img{ border: 0; }
         .error{ padding: 24px 48px; }
         .face{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }

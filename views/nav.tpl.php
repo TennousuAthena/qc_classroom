@@ -11,7 +11,7 @@
  * Created Time: 2019-01-24 - 09:43
  */
 ?>
-<nav class="navbar navbar-default container" role="navigation">
+<nav class="navbar navbar-static-top container" role="navigation">
     <div class="container-fluid">
         <!-- 导航头部 -->
         <div class="navbar-header">
@@ -26,7 +26,7 @@
             <a class="navbar-brand" href="/" title="网络在线教育智能直播课堂解决方案">青草课堂</a>
         </div>
         <!-- 导航项目 -->
-        <div class="collapse navbar-collapse navbar-collapse-example">
+        <div class="collapse navbar-collapse">
             <!-- 一般导航项目 -->
             <ul class="nav navbar-nav">
                 <li><a href="/"><i class="icon icon-home"></i>首页</a></li>

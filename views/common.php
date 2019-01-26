@@ -14,7 +14,7 @@ class View {
     /**
      * @var 是否开启随机数防缓存，方便开发
      */
-    public $is_debug;
+    public $is_debug = false;
 
     /**
      * 加载js
@@ -61,10 +61,11 @@ $view = new View();
 $view->is_debug = DEBUG;
 //部分controller不需要view
 if($UrlPath == 'show' || $UrlPath == 'callback') {
-    include_once("controller/" . $UrlPath . ".php");
+    require_once("controller/" . $UrlPath . ".php");
 }else{
-    include_once("head.tpl.php");
-    include_once("nav.tpl.php");
-    include_once("controller/" . $UrlPath . ".php");
-    include_once("foot.tpl.php");
+    require_once("head.tpl.php");
+    require_once("nav.tpl.php");
+    require_once("controller/" . $UrlPath . ".php");
+    require_once("footer.tpl.php");
+    require_once("foot.tpl.php");
 }

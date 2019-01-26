@@ -13,13 +13,13 @@
 DEFINE("DEBUG", true);   //是否开启调试模式，建议不在生产环境中启用
 // 引入配置文件
 if(!file_exists("./config.php")) die("站点尚未初始化，请将config.tpl.php重命名为config.php并进行配置！");
-include_once ("config.php");
+require_once ("config.php");
 //http method检查
 if (!in_array($_SERVER['REQUEST_METHOD'], array('GET', 'POST'))) {
     exit('Unsupported HTTP method');
 }
 //引入功能函数库文件
-include_once ("includes/function.php");
+require_once ("includes/function.php");
 // 域名检测
 if($_SERVER['HTTP_HOST'] != $Config["website"]["domain"]) header("Location: "."http://".$Config["website"]["domain"]);
 //数据库连接检测
@@ -66,12 +66,12 @@ foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
     }
 }
 if ($NotFound === true) {
-    include_once("controller/error.php");
+    require_once("controller/error.php");
     die();
 }
 if(!file_exists("controller/".$UrlPath.".php")){
-    include_once("controller/error.php");
+    require_once("controller/error.php");
     die("-1");
 }
 //引入页面模板
-include_once("./views/common.php");
+require_once("./views/common.php");
