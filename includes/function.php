@@ -10,8 +10,7 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 18:26
  */
-//引入类
-require_once ("class.php");
+require_once ("usercenter.php");
 /**
  * 获取用户真实ip
  * @return bool
@@ -46,4 +45,21 @@ function inject_check($Sql_Str) {
     }else{
         return 1;
     }
+}
+
+/**
+ * 获取当前Url
+ * @return string
+ */
+function GetCurUrl(){
+    $url='http://';
+    if(isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']=='on'){
+        $url='https://';
+    }
+    if($_SERVER['SERVER_PORT']!='80'){
+        $url.=$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
+    }else{
+        $url.=$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    }
+    return $url;
 }

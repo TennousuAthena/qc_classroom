@@ -10,18 +10,6 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 21:09
  */
-function GetCurUrl(){
-    $url='http://';
-    if(isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']=='on'){
-        $url='https://';
-    }
-    if($_SERVER['SERVER_PORT']!='80'){
-        $url.=$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
-    }else{
-        $url.=$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-    }
-    return $url;
-}
 ?>
 <!DOCTYPE html>
 <html">
