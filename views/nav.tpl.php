@@ -11,7 +11,7 @@
  * Created Time: 2019-01-24 - 09:43
  */
 ?>
-<nav class="navbar navbar-static-top container" role="navigation">
+<nav class="navbar navbar-default container" role="navigation">
     <div class="container-fluid">
         <!-- 导航头部 -->
         <div class="navbar-header">
