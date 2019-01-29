@@ -4,3 +4,12 @@ body{
     margin-top: 0;
     margin-bottom: 0;
 }
+nav{
+    size: auto;
+}
+#input_username{
+    width: 300px;
+}
+#input_password{
+    width: 300px;
+}
