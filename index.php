@@ -48,7 +48,6 @@ $Routes = array(
 $Routes['GET']['/']                                                                        = 'home';
 $Routes['GET']['/sign_up']                                                                 = 'show';
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
-$Routes['GET']['/database/debug']                                                          = 'database';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 
 //这里是Routes End
