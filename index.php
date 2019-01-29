@@ -11,6 +11,8 @@
  * Created Time: 2019-01-23 - 12:13
  */
 DEFINE("DEBUG", true);   //是否开启调试模式，建议不在生产环境中启用
+//关掉Notice
+error_reporting(E_ALL^E_NOTICE);
 // 引入配置文件
 if(!file_exists("./config.php")) die("站点尚未初始化，请将config.tpl.php重命名为config.php并进行配置！");
 require_once ("config.php");
@@ -46,6 +48,9 @@ $Routes = array(
 $Routes['GET']['/']                                                                        = 'home';
 $Routes['GET']['/sign_up']                                                                 = 'show';
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
+$Routes['GET']['/database/debug']                                                          = 'database';
+$Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
+
 //这里是Routes End
 
 
