@@ -16,38 +16,39 @@
 // ========================//
 //       数据库配置          //
 // ========================//
-$Config["database"]["address"]     = "localhost";
-$Config["database"]["port"]        = 3306;
-$Config["database"]["username"]    = "root";
-$Config["database"]["password"]    = "";
-$Config["database"]["name"]        = "edu";
+$Config["database"]["address"]     = "localhost";                                 //数据库地址
+$Config["database"]["port"]        = 3306;                                        //数据库端口
+$Config["database"]["username"]    = "root";                                      //数据库账号
+$Config["database"]["password"]    = "";                                          //数据库密码
+$Config["database"]["name"]        = "edu";                                       //数据库名称
+$Config["database"]["prefix"]      = "qc_";                                       //数据库表前缀
 
 // ========================//
 //        网站配置          //
 // ========================//
-$Config["website"]["domain"]        = "";
-$Config["website"]["title"]         = "青草课堂";
-$Config["website"]["subtitle"]      = "网络在线教育智能直播课堂解决方案";
-$Config["website"]["static"]        = "/assets/";
+$Config["website"]["domain"]        = "";                                          //网站域名
+$Config["website"]["title"]         = "青草课堂";                                   //网站标题
+$Config["website"]["subtitle"]      = "网络在线教育智能直播课堂解决方案";               //网站副标题
+$Config["website"]["static"]        = "/assets/";                                 //网站静态资源目录，可以跨域名
 
 // ========================//
 //       域名配置           //
 // ========================//
-$Config["domain"]["video"]          = "";
-$Config["domain"]["live_stream"]    = "";
-$Config["domain"]["live_play"]      = "";
+$Config["domain"]["video"]          = "";                                          //视频播放域名
+$Config["domain"]["live_stream"]    = "";                                          //直播推流域名
+$Config["domain"]["live_play"]      = "";                                          //直播播放域名
 
 // ========================//
 //        腾讯云配置         //
 // ========================//
-$Config["qcloud"]["appid"]          = 233333;
-$Config["qcloud"]["sid"]            = "";
-$Config["qcloud"]["skey"]           = "";
+$Config["qcloud"]["appid"]          = 233333;                                       //腾讯云AppId
+$Config["qcloud"]["sid"]            = "";                                           //腾讯云密钥ID
+$Config["qcloud"]["skey"]           = "";                                           //腾讯云密钥Key
 
 // ========================//
 //       Geetest配置        //
 // ========================//
-$Config["geetest"]["id"]            = "";
-$Config["geetest"]["key"]           = "";
+$Config["geetest"]["id"]            = "";                                            //极验id
+$Config["geetest"]["key"]           = "";                                            //极验key
 
 // -=     配置文件结束    =-
