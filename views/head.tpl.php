@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
 
-        <?php $view->load_css("zui.min.css"); ?>
-        <?php $view->load_css("zui-theme.min.css"); ?>
-
         <?php $view->load_css("main.css"); ?>
 
 
