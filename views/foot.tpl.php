@@ -1,4 +1,5 @@
 
+    <?php $view->load_js("../layui.all.js"); ?>
     <?php $view->load_js("main.js"); ?>
 
 
