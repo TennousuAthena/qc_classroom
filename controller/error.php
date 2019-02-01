@@ -40,6 +40,7 @@
     <h1>页面发生错误</h1>
     <div class="content">
         <p>错误信息：404 Not Found</p>
+        <p>请求方式：<?php echo $_SERVER['REQUEST_METHOD'];?></p>
         <p>页面地址：<?php echo GetCurUrl(); ?></p>
     </div>
 </div>
