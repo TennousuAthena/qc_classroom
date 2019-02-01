@@ -6,3 +6,15 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
 </IfModule>
+<Location /controller/>
+   Order allow,deny
+   Deny from all
+</Location>
+<Location /includes/>
+   Order allow,deny
+   Deny from all
+</Location>
+<Location /views/>
+   Order allow,deny
+   Deny from all
+</Location>
