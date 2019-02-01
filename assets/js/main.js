@@ -7,7 +7,7 @@ var util = layui.util
 util.fixbar({
     bar1: true
     ,bar2: true
-    ,css: {right: 50, bottom: 100}
+    ,css: {right: 10, bottom: 10}
     ,bgcolor: '#393D49'
     ,click: function(type){
         if(type === 'bar1'){
