@@ -10,13 +10,6 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 18:01
  */
-//把第一次来的引导sign_up
-setcookie("qc_flag", "1");
-if(!isset($_COOKIE['qc_flag']) || $_COOKIE['qc_flag']=''){
-    header("Location: /sign_up");
-    die();
-}
-
 class View {
     /**
      * @var 是否开启随机数防缓存，方便开发
@@ -67,7 +60,7 @@ class View {
 $view = new View();
 $view->is_debug = DEBUG;
 //部分controller不需要view
-if($UrlPath == 'show' || $UrlPath == 'callback') {
+if($UrlPath == 'show' || $UrlPath == 'callback' || !$_SERVER['REQUEST_METHOD'] == 'get') {
     require_once("controller/" . $UrlPath . ".php");
 }else{
     require_once("head.tpl.php");
