@@ -11,25 +11,25 @@
  * Created Time: 2019-01-24 - 09:43
  */
 ?>
-<ul class="layui-nav">
-    <li class="layui-nav-item"><a href="">最新活动</a></li>
-    <li class="layui-nav-item layui-this">
-        <a href="javascript:;">产品</a>
-        <dl class="layui-nav-child">
-            <dd><a href="">选项1</a></dd>
-            <dd><a href="">选项2</a></dd>
-            <dd><a href="">选项3</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item"><a href="">大数据</a></li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">解决方案</a>
-        <dl class="layui-nav-child">
-            <dd><a href="">移动模块</a></dd>
-            <dd><a href="">后台模版</a></dd>
-            <dd class="layui-this"><a href="">选中项</a></dd>
-            <dd><a href="">电商平台</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item"><a href="">社区</a></li>
-</ul>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><a href="/"><img src="<?php echo $Config["website"]["static"]; ?>img/logo_.png" style="height: 60px;"></a> </div>
+        <ul class="layui-nav layui-layout-left layui-hide-xs">
+            <li class="layui-nav-item"><a href="/">首页</a></li>
+            <li class="layui-nav-item"><a href="">我的课程</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="https://i.loli.net/2019/02/01/5c53b87f61385.jpg" class="layui-nav-img">
+                    {{用户名}}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
