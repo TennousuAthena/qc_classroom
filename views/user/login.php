@@ -14,7 +14,7 @@
     <div class="layui-card layui-container">
         <div class="layui-card-header">登录</div>
         <div class="layui-card-body">
-            <form class="layui-form" action="" method="post">
+            <form class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">账号</label>
                     <div class="layui-input-inline">
@@ -31,7 +31,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">记住我</label>
                     <div class="layui-input-block">
-                        <input type="checkbox" name="switch" lay-skin="switch">
+                        <input type="checkbox" name="remember" id="remember" lay-text="ON|OFF" lay-skin="switch">
                     </div>
                     <div class="layui-form-mid layui-word-aux">不建议您在公共设备上启用</div>
                 </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" id="submit">提交</button>
+                        <button type="button" class="layui-btn" id="btn-login">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -51,3 +51,5 @@
         </div>
     </div>
     <?php $view->load_js("gt.js"); ?>
+    <?php $view->load_js("account.js"); ?>
+
