@@ -41,7 +41,7 @@ function get_real_ip(){
 function inject_check($Sql_Str) {
     $check=preg_match('/select|insert|update|delete|\'|\\*|\*|\.\.\/|\.\/|union|into|load_file|outfile/i',$Sql_Str);
     if ($check) {
-        die();
+        return 0;
     }else{
         return 1;
     }
