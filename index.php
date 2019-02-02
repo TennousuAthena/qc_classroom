@@ -49,6 +49,7 @@ $Routes['GET']['/']                                                             
 $Routes['GET']['/sign_up']                                                                 = 'show';
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
+$Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 
 //这里是Routes End
 
@@ -70,12 +71,12 @@ foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
     }
 }
 if ($NotFound === true) {
-    require_once("controller/error.php");
+    require_once("controller/http_error.php");
     die();
 }
 if(!file_exists("controller/".$UrlPath.".php")){
-    require_once("controller/error.php");
-    die("-1");
+    require_once("controller/http_error.php");
+    die("路由出现问题");
 }
 //引入页面模板
 require_once("./views/common.php");
