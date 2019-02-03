@@ -3,13 +3,6 @@
     display: inline-block;
 }
 
-label {
-    vertical-align: top;
-    display: inline-block;
-    width: 80px;
-    text-align: right;
-}
-
 #captcha-text {
     height: 42px;
     width: 298px;
