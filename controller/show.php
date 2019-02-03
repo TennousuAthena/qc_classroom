@@ -15,7 +15,6 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-setcookie("qc_flag", "1");
 ?>
 <!DOCTYPE HTML>
 <!--
