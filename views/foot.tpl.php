@@ -1,4 +1,10 @@
-
+<?php
+//防止被恶意访问，泄露信息
+if(!defined('DEBUG')) {
+    http_response_code(403);
+    exit('Access Denied');
+}
+?>
     <?php $view->load_js("../layui.all.js"); ?>
     <?php $view->load_js("main.js"); ?>
 

@@ -1,5 +1,9 @@
 <?php
-
+//防止被恶意访问，泄露信息
+if(!defined('DEBUG')) {
+    http_response_code(403);
+    exit('Access Denied');
+}
 /**
  * 极验行为式验证安全平台，php 网站主后台包含的库文件
  *

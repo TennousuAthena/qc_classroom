@@ -10,6 +10,11 @@
  * Created by: QCTech
  * Created Time: 2019-01-29 - 14:34
  */
+//防止被恶意访问，泄露信息
+if(!defined('DEBUG')) {
+    http_response_code(403);
+    exit('Access Denied');
+}
 //引入usercenter
 $usercenter = new usercenter();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){

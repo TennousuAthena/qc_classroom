@@ -10,6 +10,11 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 18:01
  */
+//防止被恶意访问，泄露信息
+if(!defined('DEBUG')) {
+    http_response_code(403);
+    exit('Access Denied');
+}
 class View {
     /**
      * @var 是否开启随机数防缓存，方便开发

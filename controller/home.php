@@ -10,4 +10,9 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 22:24
  */
+//防止被恶意访问，泄露信息
+if(!defined('DEBUG')) {
+    http_response_code(403);
+    exit('Access Denied');
+}
 //var_dump($Parameters);
