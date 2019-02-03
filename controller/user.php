@@ -75,9 +75,9 @@ switch ($Parameters['method']){
                     die(json_encode($return));
                 }else{
                     $return = [
-                        'status' => 'success',
+                        'status' => 'failed',
                         'code'   => -102,
-                        'msg'    => '账户密码错误'
+                        'msg'    => '错误的密码'
                     ];
                     die(json_encode($return));
                 }
