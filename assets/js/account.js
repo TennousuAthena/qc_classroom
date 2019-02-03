@@ -41,7 +41,11 @@ var handler = function (captchaObj) {
                 success: function(data) {
                     layer.closeAll('loading');
                     if(data.status == "failed" || data.code < 0){
-                        layer.msg(data.msg , {icon:2});
+                        if(data.msg == 'OK'){
+                            layer.msg("服务器发生错误" , {icon:2});
+                        }else{
+                            layer.msg(data.msg , {icon:2});
+                        }
                         captchaObj.reset();
                     }else{
                         //登录成功
@@ -68,16 +72,12 @@ $.ajax({
     type: "get",
     dataType: "json",
     success: function (data) {
-        //$('#text').hide();
-        //$('#wait').show();
         initGeetest({
-            // 以下 4 个配置参数为必须，不能缺少
             gt: data.gt,
             challenge: data.challenge,
             offline: !data.success, // 表示用户后台检测极验服务器是否宕机
             new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
-
-            product: "popup", // 产品形式，包括：float，popup
+            product: "popup",
             width: "300px",
             https: true
         }, handler);
