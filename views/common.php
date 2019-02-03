@@ -60,7 +60,7 @@ class View {
 $view = new View();
 $view->is_debug = DEBUG;
 //部分controller不需要view
-if($UrlPath == 'show' || $UrlPath == 'callback' || $_SERVER['REQUEST_METHOD'] == 'POST') {
+if($UrlPath == 'show' || $UrlPath == 'callback' || $UrlPath == 'api' || $_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once("controller/" . $UrlPath . ".php");
 }else{
     require_once("head.tpl.php");

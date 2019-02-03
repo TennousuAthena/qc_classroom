@@ -22,6 +22,8 @@ if (!in_array($_SERVER['REQUEST_METHOD'], array('GET', 'POST'))) {
 }
 //引入功能函数库文件
 require_once ("includes/function.php");
+//开启session
+session_start();
 // 域名检测
 if($_SERVER['HTTP_HOST'] != $Config["website"]["domain"]) header("Location: "."http://".$Config["website"]["domain"]);
 //数据库连接检测
@@ -50,6 +52,8 @@ $Routes['GET']['/sign_up']                                                      
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
+$Routes['GET']['/api/(?<mod>.*)']                                                     = 'api';
+
 
 //这里是Routes End
 

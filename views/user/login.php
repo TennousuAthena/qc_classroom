@@ -37,14 +37,26 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">验证码</label>
-                    <div id="embed-captcha"></div>
-                    <p id="wait" class="show">正在加载验证码......</p>
-                    <p id="notice" class="layui-hide">请先完成验证</p>
+                    <div class="layui-input-block">
+                        <div id="captcha">
+                            <div id="captcha-text">
+                                验证码 安全组件加载中
+                            </div>
+                            <div id="captcha-wait">
+                                <div class="loading">
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button type="button" class="layui-btn" id="btn-login">提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
                     </div>
                 </div>
             </form>
@@ -52,4 +64,7 @@
     </div>
     <?php $view->load_js("gt.js"); ?>
     <?php $view->load_js("account.js"); ?>
+    <script>
+
+    </script>
 
