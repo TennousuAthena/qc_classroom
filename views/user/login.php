@@ -69,7 +69,3 @@ if(!defined('DEBUG')) {
     </div>
     <?php $view->load_js("gt.js"); ?>
     <?php $view->load_js("account.js"); ?>
-    <script>
-
-    </script>
-
