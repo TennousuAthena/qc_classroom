@@ -13,7 +13,8 @@ jobs:
       - checkout
       - run:
             name: Install mysqli
-            command:  php -i
+            command:  |
+                      php -i
                       sudo docker-php-ext-install mysqli
       - run:
             name: Check Syntax
