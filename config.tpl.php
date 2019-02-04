@@ -34,6 +34,7 @@ $Config["website"]["domain"]        = "";                                       
 $Config["website"]["title"]         = "青草课堂";                                   //网站标题
 $Config["website"]["subtitle"]      = "网络在线教育智能直播课堂解决方案";               //网站副标题
 $Config["website"]["static"]        = "/assets/";                                 //网站静态资源目录，可以跨域名
+$Config["website"]["https"]         = true;                                       //是否启用SSL
 
 // ========================//
 //       域名配置           //
