@@ -30,14 +30,12 @@ if(!defined('DEBUG')) {
                     <?php echo $Uinfo['username']; ?>
                 </a>
                 <dl class="layui-nav-child">
-                    <?php if($Is_login){ ?>
-                    <dd><a href="###">基本资料</a></dd>
+                    <?php if($Is_login){ ?><dd><a href="###">基本资料</a></dd>
                     <dd><a href="###">安全设置</a></dd>
                     <dd><a href="###">退出登录</a></dd>
                     <?php }else{ ?>
                     <dd><a href="/user/login">登录</a></dd>
-                    <?php } ?>
-                </dl>
+                    <?php } ?></dl>
             </li>
         </ul>
     </div>

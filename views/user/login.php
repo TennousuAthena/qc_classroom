@@ -15,6 +15,9 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+if($Is_login){
+    header("Location: /user/");
+}
 ?>
     <div class="layui-card layui-container">
         <div class="layui-card-header">登录</div>
