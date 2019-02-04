@@ -4,7 +4,19 @@ jobs:
   build:
     docker:
       - image: circleci/php:5.6-cli-jessie-node-browsers-legacy
+      - image: tkuchiki/delayed-mysql
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: edu
     steps:
       - checkout
-      - run: find ./ -type f -print0 | while read -d $'\0' file; do if [ "${file##*.}" = "php" ]; then echo "Check $file"; php -l $file; echo "";  echo ""; fi; done
-      - run: echo "非常好"
+      - run:
+            name: Check Syntax
+            command: find ./ -type f -print0 | while read -d $'\0' file; do if [ "${file##*.}" = "php" ]; then echo "Check $file"; php -l $file; echo "";  echo ""; fi; done
+      - run:
+          name: Wait for Mysql Database
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run:
+          name: Check database
+          command: sudo php ./ci.php
