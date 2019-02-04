@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
       - image: circleci/php:5.6-cli-jessie-node-browsers-legacy
-    working_directory: ~/
     steps:
       - checkout
       - run: echo "非常好"
