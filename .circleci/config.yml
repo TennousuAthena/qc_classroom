@@ -13,7 +13,9 @@ jobs:
       - checkout
       - run:
             name: Install mysqli
-            command: sudo apt-get install php-mysqli
+            command:  |
+                      php -i
+                      sudo docker-php-ext-install mysqli
       - run:
             name: Check Syntax
             command: find ./ -type f -print0 | while read -d $'\0' file; do if [ "${file##*.}" = "php" ]; then echo "Check $file"; php -l $file; echo "";  echo ""; fi; done
