@@ -5,7 +5,7 @@ if(!defined('DEBUG')) {
     exit('Access Denied');
 }
 ?>
-    <?php $view->load_js("../layui.all.js"); ?>
+    <?php $view->load_js("../layui.js"); ?>
     <?php $view->load_js("main.js"); ?>
 
     <?php if(isset($ErrInfo)){?>
