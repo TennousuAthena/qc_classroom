@@ -41,15 +41,14 @@ var handler = function (captchaObj) {
                 success: function(data) {
                     layer.closeAll('loading');
                     if(data.status == "failed" || data.code < 0){
-                        if(data.msg == 'OK'){
-                            layer.msg("服务器发生错误" , {icon:2});
-                        }else{
-                            layer.msg(data.msg , {icon:2});
-                        }
+                        layer.msg(data.msg , {icon:2});
                         captchaObj.reset();
                     }else{
                         //登录成功
                         layer.msg(data.msg, {icon:1});
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000)
                     }
                 }})
         } else if(username == "") {
