@@ -71,4 +71,20 @@ class usercenter
         }
         return false;
     }
+
+    /**
+     * 设置cookie
+     * @param string $name cookie名
+     * @param mixed $content 内容
+     * @param int $expire ?秒后过期
+     * @param bool $secure 是否https
+     * @param string $pre 前缀
+     */
+    public function set_cookie($name, $content, $expire=2592000, $secure = false, $pre="qc_"){
+        if($expire==0){
+            setcookie($pre . $name, $content, 0, '/', $_SERVER['HTTP_HOST'], $secure, true);
+        }else {
+            setcookie($pre . $name, $content, time() + $expire, '/', $_SERVER['HTTP_HOST'], $secure, true);
+        }
+    }
 }
