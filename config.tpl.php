@@ -26,7 +26,6 @@ $Config["database"]["port"]        = 3306;                                      
 $Config["database"]["username"]    = "root";                                      //数据库账号
 $Config["database"]["password"]    = "";                                          //数据库密码
 $Config["database"]["name"]        = "edu";                                       //数据库名称
-$Config["database"]["prefix"]      = "qc_";                                       //数据库表前缀
 
 // ========================//
 //        网站配置          //
