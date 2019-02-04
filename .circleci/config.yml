@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:5.6.14
+      - image: circleci/php:5.6-cli-jessie-node-browsers-legacy
     working_directory: ~/
     steps:
       - checkout
