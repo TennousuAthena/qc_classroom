@@ -15,6 +15,19 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+//判断用户是否登录
+$Uid = $_COOKIE['qc_uid'];
+if($Uid > 0){
+    if(password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']))){
+        $Is_login = true;
+        $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
+            $Config["database"]["name"]);
+        $Uinfo = $conn->query("SELECT * FROM `qc_user` WHERE `uid` = '". $Uid ."'")->fetch_assoc();
+    }
+}else{
+    $Is_login = false;
+    $Uinfo['username'] = '未登录用户';
+}
 class View {
     /**
      * @var 是否开启随机数防缓存，方便开发

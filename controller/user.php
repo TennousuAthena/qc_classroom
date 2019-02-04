@@ -128,8 +128,16 @@ switch ($Parameters['method']){
                     $return = [
                         'status' => 'success',
                         'code'   => 1000,
-                        'msg'    => '登录成功'
+                        'msg'    => '登录成功',
                     ];
+                    if($_POST['remember'] == 0){
+                        $Expire = 0;
+                    }else{
+                        $Expire = 3600*24*30;
+                    }
+                    $usercenter->set_cookie('uid', $sqlResult['uid'], $Expire , $Config["website"]["https"]);
+                    $usercenter->set_cookie('ukey', password_hash($sqlResult['uid'] . time()+3600*24*30 , PASSWORD_DEFAULT), $Expire , $Config["website"]["https"]);
+                    $usercenter->set_cookie('expire_time', time()+3600*24*30, $Expire , $Config["website"]["https"]);
                     die(json_encode($return));
                 }else{
                     $return = [
@@ -140,6 +148,7 @@ switch ($Parameters['method']){
                     die(json_encode($return));
                 }
             }
+            $conn->close();
             break;
         }
     case  'forget_password':

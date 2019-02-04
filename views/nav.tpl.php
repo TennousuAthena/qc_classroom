@@ -25,14 +25,18 @@ if(!defined('DEBUG')) {
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="https://i.loli.net/2019/02/01/5c53b87f61385.jpg" class="layui-nav-img">
-                    {{用户名}}
+                <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>javascript:;<?php } ?>">
+                    <img src="<?php echo $Config["website"]["static"]; ?>img/akari.jpg" class="layui-nav-img">
+                    <?php echo $Uinfo['username']; ?>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                    <dd><a href="">退出登录</a></dd>
+                    <?php if($Is_login){ ?>
+                    <dd><a href="###">基本资料</a></dd>
+                    <dd><a href="###">安全设置</a></dd>
+                    <dd><a href="###">退出登录</a></dd>
+                    <?php }else{ ?>
+                    <dd><a href="/user/login">登录</a></dd>
+                    <?php } ?>
                 </dl>
             </li>
         </ul>
