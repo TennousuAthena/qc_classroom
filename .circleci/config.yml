@@ -6,5 +6,5 @@ jobs:
       - image: circleci/php:5.6-cli-jessie-node-browsers-legacy
     steps:
       - checkout
-      - find ./ -type f -print0 | while read -d $'\0' file; do if [ "${file##*.}" = "php" ]; then echo "Check $file"; php -l $file; echo "";  echo ""; fi; done
+      - run: find ./ -type f -print0 | while read -d $'\0' file; do if [ "${file##*.}" = "php" ]; then echo "Check $file"; php -l $file; echo "";  echo ""; fi; done
       - run: echo "非常好"
