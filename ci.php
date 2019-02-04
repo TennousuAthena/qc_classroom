@@ -31,3 +31,8 @@ if ($conn->connect_error) {
     echo "数据库连接失败: " . $conn->connect_error;
 }
 mysqli_set_charset($conn,"utf8");
+
+
+$conn->close();
+echo "构建测试成功!";
+?>
