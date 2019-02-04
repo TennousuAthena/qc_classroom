@@ -1,5 +1,5 @@
 # 青草课堂
-[![CircleCI](https://circleci.com/gh/qcminecraft/qc_classrom.svg?style=svg)](https://circleci.com/gh/qcminecraft/qc_classrom)青草课堂——网络在线教育智能直播课堂解决方案
+[![CircleCI](https://circleci.com/gh/qcminecraft/qc_classrom.svg?style=svg&circle-token=e33f17a2b23f23e80f9d31d6e34b0ff898fd3ff4)](https://circleci.com/gh/qcminecraft/qc_classrom)青草课堂——网络在线教育智能直播课堂解决方案
 
 **(辽宁省第三十四界青少年创新大赛参赛作品)**
 
