@@ -17,7 +17,7 @@ if (!isset($_SERVER['SHELL'])) {
 // ========================//
 //       数据库配置          //
 // ========================//
-$Config["database"]["address"]     = "localhost";                                 //数据库地址
+$Config["database"]["address"]     = "127.0.0.1";                                 //数据库地址
 $Config["database"]["port"]        = 3306;                                        //数据库端口
 $Config["database"]["username"]    = "root";                                      //数据库账号
 $Config["database"]["password"]    = "";                                          //数据库密码
@@ -29,7 +29,5 @@ $conn = new mysqli($Config["database"]["address"], $Config["database"]["username
 // 检查连接
 if ($conn->connect_error) {
     echo "数据库连接失败: " . $conn->connect_error;
-    shell_execu("set -o errexit");
-    shell_execu("exit 1");
 }
 mysqli_set_charset($conn,"utf8");
