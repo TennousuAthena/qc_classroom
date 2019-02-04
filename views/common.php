@@ -51,14 +51,16 @@ class View {
         return 0;
     }
     function google_analytics($gid="UA-100755509-9"){
-        echo "        <script async src=\"https://www.googletagmanager.com/gtag/js?id=".$gid."\"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '$gid');
-            </script>
+        if(!$this->is_debug) {
+            echo "        <script async src=\"https://www.googletagmanager.com/gtag/js?id=" . $gid . "\"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '$gid');
+        </script>
 ";
+        }
     }
 }
 
