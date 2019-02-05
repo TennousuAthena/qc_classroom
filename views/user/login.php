@@ -70,5 +70,5 @@ if($Is_login){
             </form>
         </div>
     </div>
-    <?php $view->load_js("gt.js"); ?>
+    <?php $view->load_js("gt.min.js"); ?>
     <?php $view->load_js("account.js"); ?>
