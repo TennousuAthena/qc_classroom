@@ -52,7 +52,7 @@ $Routes['GET']['/sign_up']                                                      
 $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
-$Routes['GET']['/api/(?<mod>.*)']                                                     = 'api';
+$Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';
 
 
 //这里是Routes End

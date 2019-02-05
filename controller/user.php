@@ -24,6 +24,7 @@ switch ($Parameters['method']){
     case '':
         {
             //用户中心
+            if(!$Is_login) header("Location: /user/login");
 
             break;
         }
@@ -128,7 +129,7 @@ switch ($Parameters['method']){
                     $return = [
                         'status' => 'success',
                         'code'   => 1000,
-                        'msg'    => '登录成功',
+                        'msg'    => '登录成功，将在3秒后前往用户中心',
                     ];
                     if($_POST['remember'] == 0){
                         $Expire = 0;
@@ -157,9 +158,40 @@ switch ($Parameters['method']){
 
             break;
         }
+    case 'logout':
+        {
+            //退出登录
+            if(!$Is_login) header("Location: /user/login");
+            if(parse_url($_SERVER['HTTP_REFERER'])['host'] != $Config["website"]["domain"]){
+                http_response_code(403);
+                $Errinfo = '来源不正确';
+                require_once ("views/error.php");
+            }else{
+                $usercenter->set_cookie('uid', 0, -100 , $Config["website"]["https"]);
+                $usercenter->set_cookie('ukey', password_hash($sqlResult['uid'] . time() , PASSWORD_DEFAULT), -100 , $Config["website"]["https"]);
+                $usercenter->set_cookie('expire_time', time(), -100 , $Config["website"]["https"]);
+                ?>
+                <div class="layui-card layui-container">
+                    <div class="layui-card-header layui-bg-red">您已退出登录</div>
+                    <div class="layui-card-body">
+                        <p>您的账户已安全退出</p>
+                        <br />
+                        <p>将在3秒后回到首页...</p>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    setTimeout(function () {
+                        window.location.href='/';
+                    }, 3000)
+                </script>
+                <?php
+            }
+            break;
+        }
     default:
         {
-            header("Location: /not_found");
-            die();
+            http_response_code(404);
+            $Errinfo = '页面不存在';
+            require_once ("views/error.php");
         }
 }

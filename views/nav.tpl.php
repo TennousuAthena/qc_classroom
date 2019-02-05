@@ -32,7 +32,7 @@ if(!defined('DEBUG')) {
                 <dl class="layui-nav-child">
                     <?php if($Is_login){ ?><dd><a href="###">基本资料</a></dd>
                     <dd><a href="###">安全设置</a></dd>
-                    <dd><a href="###">退出登录</a></dd>
+                    <dd><a href="/user/logout">退出登录</a></dd>
                     <?php }else{ ?>
                     <dd><a href="/user/login">登录</a></dd>
                     <?php } ?></dl>
