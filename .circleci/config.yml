@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Check database
           command: sudo php ./ci.php
-experimental:
-  notify:
-    webhooks:
+notify:
+  webhooks:
+    # A list of hook hashes, containing the url field
     - url: https://hook.bearychat.com/=bwGhj/circleci/8cdd2e58feeece78ef310721cb0eda8d
