@@ -18,7 +18,7 @@ if(!defined('DEBUG')) {
 //判断用户是否登录
 $Uid = $_COOKIE['qc_uid'];
 if($Uid > 0){
-    if(password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']) && $_COOKIE['qc_expire_time'] > time())){
+    if((int)$_COOKIE['qc_expire_time'] > time() && password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']))){
         $Is_login = true;
         $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
             $Config["database"]["name"]);
@@ -30,13 +30,13 @@ if($Uid > 0){
 }
 class View {
     /**
-     * @var 是否开启随机数防缓存，方便开发
+     * @var bool 是否开启随机数防缓存，方便开发
      */
     public $is_debug = false;
 
     /**
      * 加载js
-     * @param $filename 文件在/assets/js下的名称，包含.js
+     * @param string $filename 文件在/assets/js下的名称，包含.js
      * @return int
      */
     function load_js($filename){
@@ -51,7 +51,7 @@ class View {
 
     /**
      * 加载css
-     * @param $filename 文件在/assets/css下的名称，包含.css
+     * @param string $filename 文件在/assets/css下的名称，包含.css
      * @return int
      */
     function load_css($filename){
