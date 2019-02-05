@@ -25,12 +25,14 @@ layui.use(['layer', 'form', 'util', 'element'], function(){
 if(window.localStorage && (window.localStorage.setItem('lstest', 'true') , window.localStorage.getItem('lstest') == "true")){
     //把第一次来的用户引到 /sign_up
     //这辈子写过最玄学的JS（捂脸），改天改掉
+    /*
     if(window.localStorage.getItem('flag') < 1){
         window.location.href = '/sign_up';
     }
     if(window.localStorage.getItem('flag') < 11) {
         window.localStorage.setItem('flag', window.localStorage.getItem('flag') + 1);
     }
+    */
 }else{
     layer.msg("您的浏览器不支持LocalStorage 部分功能将受到影响")
 }
