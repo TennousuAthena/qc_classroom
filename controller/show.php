@@ -54,7 +54,7 @@ if(!defined('DEBUG')) {
 </footer>
 
 <!-- Scripts -->
-<?php $view->load_js("main_show.js"); ?>
+<?php $view->load_js("main_show.min.js"); ?>
 
 <?php $view->google_analytics(); ?>
 </body>
