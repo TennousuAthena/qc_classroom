@@ -18,7 +18,7 @@ if(!defined('DEBUG')) {
 //判断用户是否登录
 $Uid = $_COOKIE['qc_uid'];
 if($Uid > 0){
-    if(password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']))){
+    if(password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']) && $_COOKIE['qc_expire_time'] > time())){
         $Is_login = true;
         $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
             $Config["database"]["name"]);
