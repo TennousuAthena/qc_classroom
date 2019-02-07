@@ -17,7 +17,7 @@ if(!defined('DEBUG')) {
 }
 ?>
 <header>
-    <div class="layui-hide-lg layui-hide-md layui-hide-sm layui-bg-orange" style="line-height: 50px">
+    <div class="layui-hide-lg layui-hide-md layui-hide-sm layui-bg-orange" style="line-height: 2em">
         <p> <i class="layui-icon layui-icon-about"></i> 请注意：青草课堂的设计没有考虑移动端适配，若有页面问题请及时<a href="https://gitee.com/qcmc/qc_classrom/issues" target="_blank" rel="nofollow">反馈</a>！</p>
     </div>
     <div class="layui-layout layui-layout-admin">
