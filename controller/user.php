@@ -31,6 +31,11 @@ switch ($Parameters['method']){
     case 'register':
         {
             //注册
+            if($_SERVER['REQUEST_METHOD'] == 'GET') {
+                require_once("views/user/register.php");
+            }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+
+            }
 
             break;
         }
@@ -129,7 +134,7 @@ switch ($Parameters['method']){
                     $return = [
                         'status' => 'success',
                         'code'   => 1000,
-                        'msg'    => '登录成功，将在3秒后前往用户中心',
+                        'msg'    => '登录成功，将在3秒后前往用户中心' . $usercenter->get_avatar(1, $conn),
                     ];
                     if($_POST['remember'] == 0){
                         $Expire = 0;

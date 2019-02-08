@@ -95,3 +95,9 @@
     50% { opacity: 0.8; }
     100% { opacity: 0; }
 }
+
+.qc_footer{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}

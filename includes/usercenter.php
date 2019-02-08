@@ -87,4 +87,19 @@ class usercenter
             setcookie($pre . $name, $content, time() + $expire, '/', $_SERVER['HTTP_HOST'], $secure, true);
         }
     }
+
+    /**
+     * 获取用户头像
+     * @param int $uid 用户名
+     * @param object $conn 数据库连接信息
+     * @return string 用户头像上传地址
+     * todo:使用时前面要加$Config["website"]["static"]
+     */
+    public function get_avatar($uid, $conn){
+        if($conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->num_rows <= 0){
+            return '/img/akari.jpg';
+        }else{
+            return $conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->fetch_assoc()['avatar_url'];
+        }
+    }
 }

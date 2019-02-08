@@ -15,3 +15,8 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+if($Is_login){
+    header("Location: /user/");
+}
+?>
+
