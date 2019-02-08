@@ -15,6 +15,7 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+$usercenter = new usercenter();
 ?>
 <header>
     <div class="layui-hide-lg layui-hide-md layui-hide-sm layui-bg-orange" style="line-height: 2em">
@@ -30,7 +31,7 @@ if(!defined('DEBUG')) {
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>javascript:;<?php } ?>">
-                        <img src="<?php echo $Config["website"]["static"]; ?>img/akari.jpg" class="layui-nav-img">
+                        <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
                         <?php echo $Uinfo['username']; ?>
                     </a>
                     <dl class="layui-nav-child">
