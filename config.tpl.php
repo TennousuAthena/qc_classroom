@@ -49,6 +49,8 @@ $Config["domain"]["live_play"]      = "";                                       
 $Config["qcloud"]["appid"]          = 233333;                                       //腾讯云AppId
 $Config["qcloud"]["sid"]            = "";                                           //腾讯云密钥ID
 $Config["qcloud"]["skey"]           = "";                                           //腾讯云密钥Key
+$Config["qcloud"]["smsid"]          = "";                                           //腾讯云短信appid
+$Config["qcloud"]["smskey"]         = "";                                           //腾讯云短信Key
 
 // ========================//
 //       Geetest配置        //
