@@ -53,6 +53,7 @@ $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                 
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 $Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';
+$Routes['POST']['/api/(?<mod>.*)']                                                          = 'api';
 
 
 //这里是Routes End
@@ -74,9 +75,18 @@ foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
         break;
     }
 }
-if ($NotFound === true) {
+if ($NotFound === true && $_SERVER['REQUEST_METHOD']== 'GET') {
+    http_response_code(404);
     require_once("controller/http_error.php");
     die();
+}elseif ($NotFound === true){
+    http_response_code(404);
+    $return = [
+        'status' => 'failed',
+        'code'   => -99,
+        'msg'    => '未知模块-'
+    ];
+    die(json_encode($return));
 }
 if(!file_exists("controller/".$UrlPath.".php")){
     require_once("controller/http_error.php");
