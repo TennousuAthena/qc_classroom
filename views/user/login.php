@@ -24,27 +24,27 @@ if($Is_login){
         <div class="layui-card-body">
             <form class="layui-form">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">账号</label>
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>账号</label>
                     <div class="layui-input-inline">
                         <input type="text" name="username" id="username" required  lay-verify="required" placeholder="请输入您的账号" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">支持您的用户名/手机号/邮箱</div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>密码</label>
                     <div class="layui-input-inline">
                         <input type="password" name="password" id="password" required lay-verify="required" placeholder="请输入您的密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">记住我</label>
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-log"></i>记住我</label>
                     <div class="layui-input-block">
                         <input type="checkbox" name="remember" id="remember" lay-text="ON|OFF" lay-skin="switch">
                     </div>
                     <div class="layui-form-mid layui-word-aux">不建议您在公共设备上启用</div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">验证码</label>
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i>验证码</label>
                     <div class="layui-input-block">
                         <div id="captcha">
                             <div id="captcha-text">
