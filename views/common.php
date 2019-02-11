@@ -16,6 +16,7 @@ if(!defined('DEBUG')) {
     exit('Access Denied');
 }
 //判断用户是否登录
+$usercenter = new usercenter();
 $Uid = $_COOKIE['qc_uid'];
 if($Uid > 0){
     if((int)$_COOKIE['qc_expire_time'] > time() && password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']))){
@@ -25,6 +26,7 @@ if($Uid > 0){
         $Uinfo = $conn->query("SELECT * FROM `qc_user` WHERE `uid` = '". $Uid ."'")->fetch_assoc();
     }
 }else{
+    $usercenter->set_cookie('uid', '0');
     $Is_login = false;
     $Uinfo['username'] = '未登录用户';
 }

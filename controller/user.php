@@ -20,6 +20,7 @@ $usercenter = new usercenter();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     header('Content-Type: application/json');
 }
+$conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"], $Config["database"]["name"]);
 switch ($Parameters['method']){
     case '':
         {
@@ -34,6 +35,84 @@ switch ($Parameters['method']){
             if($_SERVER['REQUEST_METHOD'] == 'GET') {
                 require_once("views/user/register.php");
             }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+                //检查所有输入
+                foreach ($_POST as $key => $value)
+                {
+                    inject_check($value);
+                }
+                //检查用户名
+                if(!preg_match('/^[a-zA-Z0-9_-]{4,16}$/', $_POST['username'])){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -201,
+                        'msg'    => '用户名不合法'
+                    ];
+                    die(json_encode($return));
+                }
+                //用户名查重
+                $data = $conn->query('SELECT * FROM `qc_user` WHERE `username` = \''. $_POST['username'] .'\' LIMIT 1');
+                if($data->num_rows > 0){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -204,
+                        'msg'    => '用户名已被占用'
+                    ];
+                    die(json_encode($return));
+                }
+                //检查密码
+                if(!preg_match('/^.*(?=.{9,})(?=.*\d)(?=.*[A-z]).*$/', $_POST['password'])){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -202,
+                        'msg'    => '密码不合法'
+                    ];
+                    die(json_encode($return));
+                }
+                //检查年级
+                if(!$_POST['edu'] > 6 && !$_POST['edu'] <=0){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -203,
+                        'msg'    => '年级不合法'
+                    ];
+                    die(json_encode($return));
+                }
+                //电话号码查重
+                $data = $conn->query('SELECT * FROM `qc_user` WHERE `phone` = \''. $_POST['phone'] .'\' LIMIT 1');
+                if($data->num_rows > 0){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -205,
+                        'msg'    => '手机号已被注册'
+                    ];
+                    die(json_encode($return));
+                }
+                //从数据库中查询lid,电话号,验证码，和用户输入进行比对
+                $data = $conn->query('SELECT * FROM `qc_phone_sms` WHERE `lid` = \''. $_POST['lid'] .'\' LIMIT 1')->fetch_assoc();
+                if($_POST['phone'] == $data['target'] && $_POST['code'] == $data['code'] && $data['flag'] != 1){
+                    //验证成功，把数据插flag
+                    $conn->query('UPDATE `qc_phone_sms` SET `flag` = \'1\' WHERE `lid` = \''. $_POST['lid'] .'\';');
+                    //注册
+                    $pass = $usercenter->pass_crypt($_POST['password']);
+
+                    $conn->query('INSERT INTO `qc_user` (`username`, `password`, `reg_date`, `email`, `phone`)
+VALUES (\''. $_POST['username'] .'\', \''. $pass .'\', \''. time() .'\', \'\', \''. $_POST['phone'] .'\');');
+
+                    $return = [
+                        'status' => 'success',
+                        'code'   => 200,
+                        'msg'    => '注册成功'
+                    ];
+                    die(json_encode($return));
+
+                }else{
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -203,
+                        'msg'    => '短信验证码错误'
+                    ];
+                    die(json_encode($return));
+                }
 
             }
 
@@ -73,29 +152,15 @@ switch ($Parameters['method']){
                     "client_type" => $usercenter->is_mobile() ? "h5" : "web",
                     "ip_address" => get_real_ip()
                 );
-                if ($_SESSION['gtserver'] == 1) {   //服务器正常
-                    $result = $GtSdk->success_validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode'], $user_info);
-                    if (!$result) {
-                        $return = [
+                $result = $GtSdk->success_validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode'], $user_info);
+                if (!$result) {
+                    $return = [
                             'status' => 'failed',
                             'code'   => -105,
                             'msg'    => '验证码信息错误'
                         ];
-                        die(json_encode($return));
-                    }
-                }else{  //服务器宕机,走failback模式
-                    if ($GtSdk->fail_validate($_POST['geetest_challenge'],$_POST['geetest_validate'],$_POST['geetest_seccode'])) {
-                        //echo '{"status":"success"}'; OK
-                    }else{
-                        $return = [
-                            'status' => 'failed',
-                            'code'   => -106,
-                            'msg'    => '离线模式下验证码信息错误'
-                        ];
-                        die(json_encode($return));
-                    }
+                    die(json_encode($return));
                 }
-
 
                 //检查注入
                 inject_check($_POST['password']);
@@ -130,11 +195,11 @@ switch ($Parameters['method']){
                     die(json_encode($return));
                 }
                 //验证密码是否正确
-                if($usercenter->pass_crypt($_POST["password"], $sqlResult['salt'])['password'] == $sqlResult['password']){
+                if(password_verify($_POST['password'], $sqlResult['password'])){
                     $return = [
                         'status' => 'success',
                         'code'   => 1000,
-                        'msg'    => '登录成功，将在3秒后前往用户中心' . $usercenter->get_avatar(1, $conn),
+                        'msg'    => '登录成功，将在3秒后前往用户中心',
                     ];
                     if($_POST['remember'] == 0){
                         $Expire = 0;
@@ -173,7 +238,7 @@ switch ($Parameters['method']){
                 require_once ("views/error.php");
             }else{
                 $usercenter->set_cookie('uid', 0, -100 , $Config["website"]["https"]);
-                $usercenter->set_cookie('ukey', password_hash($sqlResult['uid'] . time() , PASSWORD_DEFAULT), -100 , $Config["website"]["https"]);
+                $usercenter->set_cookie('ukey', password_hash(time() , PASSWORD_DEFAULT), -100 , $Config["website"]["https"]);
                 $usercenter->set_cookie('expire_time', time(), -100 , $Config["website"]["https"]);
                 ?>
                 <div class="layui-card layui-container">
@@ -182,6 +247,7 @@ switch ($Parameters['method']){
                         <p>您的账户已安全退出</p>
                         <br />
                         <p>将在3秒后回到首页...</p>
+                        <p class="layui-word-aux">不要吐槽青草前端写得丑，我尽力了好吗QAQ...</p>
                     </div>
                 </div>
                 <script type="text/javascript">

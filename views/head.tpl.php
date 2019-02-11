@@ -24,3 +24,6 @@ if(!defined('DEBUG')) {
     <?php $view->load_js("html5.min.js"); ?>
     <?php $view->load_js("respond.min.js"); ?>
     <![endif]-->
+
+    <?php $view->load_js("../layui.js"); ?>
+    <?php $view->load_js("main.js"); ?>

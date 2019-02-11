@@ -23,6 +23,9 @@ header('Pragma: no-cache');
 header('Content-Type: application/json');
 //引入usercenter
 $usercenter = new usercenter();
+//数据库
+$conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
+    $Config["database"]["name"]);
 switch ($Parameters['mod']){
     case 'captcha':{
         require_once ("includes/geetest/lib/class.geetestlib.php");
@@ -65,13 +68,19 @@ switch ($Parameters['mod']){
                 ];
                 die(json_encode($return));
             }
+            $data = $conn->query('SELECT * FROM `qc_user` WHERE `phone` = \''. $_POST['phoneNumber'] .'\' LIMIT 1');
+            if($data->num_rows > 0){
+                $return = [
+                    'status' => 'failed',
+                    'code'   => -205,
+                    'msg'    => '手机号已被注册'
+                ];
+                die(json_encode($return));
+            }
+
             $verifyCode = rand(100000, 999999);
             $ssender = new SmsSingleSender($Config["qcloud"]["smsid"], $Config["qcloud"]["smskey"]);
             $result = $ssender->sendWithParam("86", $_POST['phoneNumber'], 244008, [$verifyCode , 30], "青草Minecraft", "", "");
-
-            // 创建连接
-            $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
-                $Config["database"]["name"]);
 
             $conn->query('INSERT INTO `qc_phone_sms` (`lid`, `target`, `sendTime`, `sendIP`, `code`) VALUES (NULL, \''. $_POST['phoneNumber'] .'\', \''. time() .'\', \''. get_real_ip() .'\', \''. $verifyCode .'\')');
 

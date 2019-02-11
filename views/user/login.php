@@ -15,8 +15,10 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-if($Is_login){
-    header("Location: /user/");
+if(isset($Is_login)){
+    if($Is_login) {
+        header("Location: /user/");
+    }
 }
 ?>
     <div class="layui-card layui-container">

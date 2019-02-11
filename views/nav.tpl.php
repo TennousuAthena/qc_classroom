@@ -40,6 +40,7 @@ $usercenter = new usercenter();
                         <dd><a href="/user/logout">退出登录</a></dd>
                         <?php }else{ ?>
                         <dd><a href="/user/login">登录</a></dd>
+                        <dd><a href="/user/register">注册</a></dd>
                         <?php } ?></dl>
                 </li>
             </ul>

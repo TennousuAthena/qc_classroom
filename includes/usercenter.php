@@ -21,19 +21,10 @@ class usercenter
     /**
      * 加密用户密码
      * @param $password
-     * @return array
+     * @return string
      */
-    public function pass_crypt($password, $salt = ''){
-        $options['cost'] = 12;
-        if($salt == ''){
-            $options['salt'] = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
-        }else{
-            $options['salt'] = $salt;
-        }
-        return array(
-            'salt' => $options['salt'],
-            'password' => password_hash($password, PASSWORD_BCRYPT, $options)
-        );
+    public function pass_crypt($password){
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
@@ -97,7 +88,7 @@ class usercenter
      */
     public function get_avatar($uid, $conn){
         if($conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->num_rows <= 0){
-            return '/img/akari.jpg';
+            return 'img/akari.jpg';
         }else{
             return $conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->fetch_assoc()['avatar_url'];
         }

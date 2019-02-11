@@ -4,7 +4,8 @@
 layui.use(['layer', 'form', 'util', 'element'], function(){
     var util = layui.util
         ,laydate = layui.laydate
-        ,layer = layui.layer;
+        ,layer = layui.layer
+        ,form = layui.form;
     //固定块
     util.fixbar({
         bar1: true

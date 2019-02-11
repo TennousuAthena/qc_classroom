@@ -5,9 +5,6 @@ if(!defined('DEBUG')) {
     exit('Access Denied');
 }
 ?>
-    <?php $view->load_js("../layui.js"); ?>
-    <?php $view->load_js("main.js"); ?>
-
     <?php if(isset($ErrInfo)){?>
         <script type="text/javascript">
             layer.msg('<?php echo $ErrInfo;?>', {icon: 2});
