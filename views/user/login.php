@@ -64,6 +64,9 @@ if(isset($Is_login)){
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <a class="layui-form" href="/user/register">没有账户？注册一个</a>
+                </div>
+                <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button type="button" class="layui-btn" id="btn-login">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
