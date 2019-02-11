@@ -33,7 +33,7 @@ if ($conn->connect_error) {
 mysqli_set_charset($conn,"utf8");
 
 //qc_user
-$conn->query("CREATE TABLE `edu`.`qc_user` ( `uid` INT NOT NULL AUTO_INCREMENT COMMENT '用户Id' , `username` TEXT NOT NULL COMMENT '用户名' , `password` TEXT NOT NULL COMMENT '用户密码' , `reg_date` INT NOT NULL COMMENT '注册时间（时间戳）' , `email` TEXT NOT NULL COMMENT '邮箱' , `phone` TEXT NOT NULL COMMENT '手机号' , PRIMARY KEY (`uid`)) ENGINE = InnoDB;");
+$conn->query("CREATE TABLE `edu`.`qc_user` ( `uid` INT NOT NULL AUTO_INCREMENT COMMENT '用户Id' , `username` TEXT NOT NULL COMMENT '用户名' , `password` TEXT NOT NULL COMMENT '用户密码' , `reg_date` INT NOT NULL COMMENT '注册时间（时间戳）' , `email` TEXT NOT NULL COMMENT '邮箱' , `phone` TEXT NOT NULL COMMENT '手机号' ,`gender` tinyint NOT NULL DEFAULT '0' COMMENT '性别（0:未知，1:男，2:女)', PRIMARY KEY (`uid`)) ENGINE = InnoDB;");
 $conn->query("CREATE TABLE `edu`.`qc_avatar` ( `uid` INT NOT NULL COMMENT '用户uid' , `avatar_url` TEXT NOT NULL COMMENT '头像Url' ) ENGINE = InnoDB;");
 $conn->query("CREATE TABLE `edu`.`qc_phone_sms` ( `lid` INT NOT NULL AUTO_INCREMENT COMMENT 'ID' , `target` TEXT NOT NULL COMMENT '目标手机号' , `sendTime` INT NOT NULL COMMENT '发送时间（时间戳）' , `sendIP` TEXT NOT NULL COMMENT '发送者IP' , `code` INT NOT NULL COMMENT '短信代码', `flag` tinyint NOT NULL DEFAULT '0' COMMENT '使用标记' , PRIMARY KEY (`lid`)) ENGINE = InnoDB;");
 
