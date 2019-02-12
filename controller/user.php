@@ -98,6 +98,10 @@ switch ($Parameters['method']){
                     $conn->query('INSERT INTO `qc_user` (`username`, `password`, `reg_date`, `email`, `phone`)
 VALUES (\''. $_POST['username'] .'\', \''. $pass .'\', \''. time() .'\', \'\', \''. $_POST['phone'] .'\');');
 
+                    $data = $conn->query('SELECT * FROM `qc_user` WHERE `username` = \''. $_POST['username'] .'\' LIMIT 1')->fetch_assoc();
+                    $conn->query('INSERT INTO `qc_user_detail` (`uid`, `realname`, `education`, `grade`)
+VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
+
                     $return = [
                         'status' => 'success',
                         'code'   => 200,

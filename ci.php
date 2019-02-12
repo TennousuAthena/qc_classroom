@@ -61,6 +61,7 @@ $conn->query("CREATE TABLE `edu`.`qc_phone_sms` (
 //qc_user_detail 用户详情信息表
 $conn->query("CREATE TABLE `qc_user_detail` (
   `uid` int(11) NOT NULL COMMENT '唯一指定Uid',
+  `realname` char NOT NULL COMMENT '用户真实姓名',
   `education` tinyint NOT NULL COMMENT '学历（1：小学，2：初中，3：高中，4：大学，5：其他）',
   `grade` tinyint NOT NULL COMMENT '年级',
   FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`)
