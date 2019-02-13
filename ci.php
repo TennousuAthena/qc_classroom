@@ -66,6 +66,16 @@ $conn->query("CREATE TABLE `qc_user_detail` (
   `grade` tinyint NOT NULL COMMENT '年级',
   FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`)
 );");
+//qc_log 日志表
+$conn->query("CREATE TABLE `qc_log` (
+  `lgid` int NOT NULL COMMENT '日志Id' AUTO_INCREMENT PRIMARY KEY,
+  `type` char NOT NULL COMMENT '日志类型',
+  `detail` text NOT NULL COMMENT '日志内容',
+  `ip` char NOT NULL COMMENT '操作IP',
+  `uid` int NOT NULL COMMENT '操作uid',
+  `env` text NOT NULL COMMENT '操作环境',
+  `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）'
+);");
 
 $conn->close();
 echo "构建测试成功!";
