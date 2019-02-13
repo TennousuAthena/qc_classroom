@@ -1,2 +1,6 @@
 User-agent: *
 Disallow: /admin/
+Disallow: /api/
+Disallow: /assets/
+Disallow: /user/login
+Disallow: /user/register
