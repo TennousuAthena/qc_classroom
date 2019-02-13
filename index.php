@@ -10,7 +10,6 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 12:13
  */
-DEFINE("DEBUG", true);   //是否开启调试模式，建议不在生产环境中启用
 //关掉Notice
 error_reporting(E_ERROR);
 // 引入配置文件
