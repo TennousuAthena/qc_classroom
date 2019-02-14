@@ -44,10 +44,13 @@ $conn->query("CREATE TABLE `edu`.`qc_user` (
 	PRIMARY KEY (`uid`)
 ) ENGINE = InnoDB;");
 //qc_avatar 用户头像表
-$conn->query("CREATE TABLE `edu`.`qc_avatar` (
-	`uid` INT NOT NULL COMMENT '用户uid',
-	`avatar_url` TEXT NOT NULL COMMENT '头像Url'
-) ENGINE = InnoDB;");
+$conn->query("CREATE TABLE `qc_avatar` (
+  `uid` int(11) NOT NULL COMMENT '用户uid',
+  `avatar_url` text NOT NULL COMMENT '头像Url',
+  FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`)
+);");
+$conn->query("ALTER TABLE `qc_avatar`
+ADD FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`);");
 //qc_phone_sms 短信验证记录表
 $conn->query("CREATE TABLE `edu`.`qc_phone_sms` (
 	`lid` INT NOT NULL AUTO_INCREMENT COMMENT 'ID',
