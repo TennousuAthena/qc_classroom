@@ -23,6 +23,7 @@
 - 前端UI框架： [layui](https://github.com/sentsin/layui)
 - 前端框架： [jquery](https://github.com/jquery/jquery)
 - 服务器支持： [腾讯云](https://cloud.tencent.com/)
+- 验证码提供： [Geetest](https://www.geetest.com/)
 
 ## 许可
 本项目使用 GPL v3协议进行许可，
