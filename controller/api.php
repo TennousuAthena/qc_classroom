@@ -80,7 +80,7 @@ switch ($Parameters['mod']){
 
             $verifyCode = rand(100000, 999999);
             $ssender = new SmsSingleSender($Config["qcloud"]["smsid"], $Config["qcloud"]["smskey"]);
-            $result = $ssender->sendWithParam("86", $_POST['phoneNumber'], 244008, [$verifyCode , 30], "青草Minecraft", "", "");
+            $result = $ssender->sendWithParam("86", $_POST['phoneNumber'], 244008, [$verifyCode , 10], "青草Minecraft", "", "");
 
             $conn->query('INSERT INTO `qc_phone_sms` (`lid`, `target`, `sendTime`, `sendIP`, `code`) VALUES (NULL, \''. $_POST['phoneNumber'] .'\', \''. time() .'\', \''. get_real_ip() .'\', \''. $verifyCode .'\')');
 

@@ -52,7 +52,8 @@ $Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                 
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 $Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';
-$Routes['POST']['/api/(?<mod>.*)']                                                          = 'api';
+$Routes['POST']['/api/(?<mod>.*)']                                                         = 'api';
+$Routes['GET']['/callback/(?<methmod>.*)']                                                 = 'callback';
 
 
 //这里是Routes End

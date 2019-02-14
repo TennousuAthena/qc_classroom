@@ -90,6 +90,15 @@ switch ($Parameters['method']){
                 //从数据库中查询lid,电话号,验证码，和用户输入进行比对
                 $data = $conn->query('SELECT * FROM `qc_phone_sms` WHERE `lid` = \''. $_POST['lid'] .'\' LIMIT 1')->fetch_assoc();
                 if($_POST['phone'] == $data['target'] && $_POST['code'] == $data['code'] && $data['flag'] != 1){
+                    //验证码是否过期
+                    if(time() - $data['sendTime'] > 10 * 60){
+                        $return = [
+                            'status' => 'failed',
+                            'code'   => -206,
+                            'msg'    => '验证码过期'
+                        ];
+                        die(json_encode($return));
+                    }
                     //验证成功，把数据插flag
                     $conn->query('UPDATE `qc_phone_sms` SET `flag` = \'1\' WHERE `lid` = \''. $_POST['lid'] .'\';');
                     //注册
@@ -112,7 +121,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                 }else{
                     $return = [
                         'status' => 'failed',
-                        'code'   => -203,
+                        'code'   => -204,
                         'msg'    => '短信验证码错误'
                     ];
                     die(json_encode($return));
