@@ -15,9 +15,7 @@
 [青草文件](https://file.qcminecraft.com/index.php?share/file&user=1&sid=TYmnaZNw)
 
 ## 如何食用？
-- 配置config.tpl.php
-- 将config.tpl.php 更名为 config.php
-- 大功告成！
+见[https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/shi-yong-wen-dang/untitled](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/shi-yong-wen-dang/untitled)
 
 ## 特别感谢
 - 前端UI框架： [layui](https://github.com/sentsin/layui)
