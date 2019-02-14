@@ -7,7 +7,7 @@
 
 **(辽宁省第三十四界青少年创新大赛参赛作品)**
 ## 开发&使用 文档
-[gitbook](https://www.gitbook.com/invite/qctech?invite=-L9SsBXoTyLtl_GfWp2E)
+[Gitbook](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/)
 
 ## 项目计划书
 [Google 文档(需要魔法上网)](https://docs.google.com/document/d/1wucpRcdmW1fEJq2huDKZVGJLCpeBQYsSts2dUoesVe8/edit?usp=sharing)
