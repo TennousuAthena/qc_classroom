@@ -19,7 +19,7 @@ if (!isset($_SERVER['SHELL'])) {
 // ========================//
 $Config["database"]["address"]     = "127.0.0.1";                                 //数据库地址
 $Config["database"]["port"]        = 3306;                                        //数据库端口
-$Config["database"]["username"]    = "root";                                      //数据库账号
+$Config["database"]["username"]    = "edu";                                       //数据库账号
 $Config["database"]["password"]    = "";                                          //数据库密码
 $Config["database"]["name"]        = "edu";                                       //数据库名称
 
@@ -32,8 +32,11 @@ if ($conn->connect_error) {
 }
 mysqli_set_charset($conn,"utf8");
 
+//设置编码
+$conn->query("ALTER DATABASE `". $Config["database"]["name"] ."` COLLATE utf8_swedish_ci");
+
 //qc_user 用户数据基本表
-$conn->query("CREATE TABLE `edu`.`qc_user` (
+$conn->query("CREATE TABLE `qc_user` (
 	`uid` INT NOT NULL AUTO_INCREMENT COMMENT '用户Id',
 	`username` TEXT NOT NULL COMMENT '用户名',
 	`password` TEXT NOT NULL COMMENT '用户密码',
@@ -52,7 +55,7 @@ $conn->query("CREATE TABLE `qc_avatar` (
 $conn->query("ALTER TABLE `qc_avatar`
 ADD FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`);");
 //qc_phone_sms 短信验证记录表
-$conn->query("CREATE TABLE `edu`.`qc_phone_sms` (
+$conn->query("CREATE TABLE `qc_phone_sms` (
 	`lid` INT NOT NULL AUTO_INCREMENT COMMENT 'ID',
 	`target` TEXT NOT NULL COMMENT '目标手机号',
 	`sendTime` INT NOT NULL COMMENT '发送时间（时间戳）',
@@ -79,7 +82,25 @@ $conn->query("CREATE TABLE `qc_log` (
   `env` text NOT NULL COMMENT '操作环境',
   `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）'
 );");
+//qc_group 用户组表
+$conn->query("CREATE TABLE `qc_group` (
+  `gid` tinyint NOT NULL COMMENT '用户组ID',
+  `name` char NOT NULL COMMENT '用户组名称'
+);");
+$conn->query("ALTER TABLE `qc_group`
+ADD PRIMARY KEY `gid` (`gid`);");
+//qc_group 默认数据
+$qc_group = [
+    0 => '临时封禁',
+    1 => '学生',
+    2 => '教师',
+    3 => '管理员',
+];
+foreach ($qc_group as $key => $value){
+        $conn->query("INSERT INTO `qc_group` (`gid`, `name`)
+  VALUES ('". $key ."', '". $value ."');");
+}
 
 $conn->close();
-echo "构建测试成功!";
+echo "青草课堂 ：构建测试成功! \n";
 ?>
