@@ -35,6 +35,24 @@ mysqli_set_charset($conn,"utf8");
 //设置编码
 $conn->query("ALTER DATABASE `". $Config["database"]["name"] ."` COLLATE utf8_swedish_ci");
 
+//qc_group 用户组表
+$conn->query("CREATE TABLE `qc_group` (
+  `gid` tinyint NOT NULL COMMENT '用户组ID',
+  `name` char NOT NULL COMMENT '用户组名称'
+);");
+$conn->query("ALTER TABLE `qc_group`
+ADD PRIMARY KEY `gid` (`gid`);");
+//qc_group 默认数据
+$qc_group = [
+    0 => '临时封禁',
+    1 => '学生',
+    2 => '教师',
+    3 => '管理员',
+];
+foreach ($qc_group as $key => $value){
+    $conn->query("INSERT INTO `qc_group` (`gid`, `name`)
+  VALUES ('". $key ."', '". $value ."');");
+}
 //qc_user 用户数据基本表
 $conn->query("CREATE TABLE `qc_user` (
 	`uid` INT NOT NULL AUTO_INCREMENT COMMENT '用户Id',
@@ -44,6 +62,8 @@ $conn->query("CREATE TABLE `qc_user` (
 	`email` TEXT NOT NULL COMMENT '邮箱',
 	`phone` TEXT NOT NULL COMMENT '手机号',
 	`gender` tinyint NOT NULL DEFAULT '0' COMMENT '性别（0:未知，1:男，2:女)',
+	`gid` tinyint(4) NOT NULL COMMENT '用户所在组',
+    FOREIGN KEY (`gid`) REFERENCES `qc_group` (`gid`),
 	PRIMARY KEY (`uid`)
 ) ENGINE = InnoDB;");
 //qc_avatar 用户头像表
@@ -82,24 +102,6 @@ $conn->query("CREATE TABLE `qc_log` (
   `env` text NOT NULL COMMENT '操作环境',
   `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）'
 );");
-//qc_group 用户组表
-$conn->query("CREATE TABLE `qc_group` (
-  `gid` tinyint NOT NULL COMMENT '用户组ID',
-  `name` char NOT NULL COMMENT '用户组名称'
-);");
-$conn->query("ALTER TABLE `qc_group`
-ADD PRIMARY KEY `gid` (`gid`);");
-//qc_group 默认数据
-$qc_group = [
-    0 => '临时封禁',
-    1 => '学生',
-    2 => '教师',
-    3 => '管理员',
-];
-foreach ($qc_group as $key => $value){
-        $conn->query("INSERT INTO `qc_group` (`gid`, `name`)
-  VALUES ('". $key ."', '". $value ."');");
-}
 
 $conn->close();
 echo "青草课堂 ：构建测试成功! \n";
