@@ -14,12 +14,13 @@ if (!isset($_SERVER['SHELL'])) {
     http_response_code(403);
     die('Access Denied');
 }
+mysqli_report(MYSQLI_REPORT_STRICT);
 // ========================//
 //       数据库配置          //
 // ========================//
 $Config["database"]["address"]     = "127.0.0.1";                                 //数据库地址
 $Config["database"]["port"]        = 3306;                                        //数据库端口
-$Config["database"]["username"]    = "edu";                                       //数据库账号
+$Config["database"]["username"]    = "root";                                      //数据库账号
 $Config["database"]["password"]    = "";                                          //数据库密码
 $Config["database"]["name"]        = "edu";                                       //数据库名称
 
@@ -28,7 +29,7 @@ $conn = new mysqli($Config["database"]["address"], $Config["database"]["username
     $Config["database"]["name"]);
 // 检查连接
 if ($conn->connect_error) {
-    die( "数据库连接失败: " . $conn->connect_error);
+    die( "Error 数据库连接失败: " . $conn->connect_error);
 }
 mysqli_set_charset($conn,"utf8");
 
