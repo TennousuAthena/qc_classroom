@@ -63,7 +63,7 @@ $conn->query("CREATE TABLE `qc_user` (
 	`email` TEXT NOT NULL COMMENT '邮箱',
 	`phone` TEXT NOT NULL COMMENT '手机号',
 	`gender` tinyint NOT NULL DEFAULT '0' COMMENT '性别（0:未知，1:男，2:女)',
-	`gid` tinyint(4) NOT NULL COMMENT '用户所在组',
+	`gid` tinyint(4) NOT NULL DEFAULT '1' COMMENT '用户所在组',
     FOREIGN KEY (`gid`) REFERENCES `qc_group` (`gid`),
 	PRIMARY KEY (`uid`)
 ) ENGINE = InnoDB;");
