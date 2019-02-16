@@ -18,11 +18,11 @@ if(!defined('DEBUG')) {
 //判断用户是否登录
 $usercenter = new usercenter();
 $Uid = $_COOKIE['qc_uid'];
+$conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
+    $Config["database"]["name"]);
 if($Uid > 0){
     if((int)$_COOKIE['qc_expire_time'] > time() && password_verify($Uid . $_COOKIE['qc_expire_time'] , utf8_decode($_COOKIE['qc_ukey']))){
         $Is_login = true;
-        $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
-            $Config["database"]["name"]);
         $Uinfo = $conn->query("SELECT * FROM `qc_user` WHERE `uid` = '". $Uid ."'")->fetch_assoc();
     }
 }else{
@@ -78,6 +78,9 @@ class View {
         }
     }
 }
+//写访问日志
+$ref = (GetCurUrl() == $_SERVER['HTTP_REFERER']) ? '' : 'from {'. $_SERVER['HTTP_REFERER'] .'}';
+$usercenter->write_log($conn, 'visit', $_SERVER['REQUEST_METHOD']. ' ' . GetCurUrl() . ' ' . $ref , $Uid, true);
 
 $view = new View();
 $view->is_debug = DEBUG;

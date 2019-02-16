@@ -28,6 +28,20 @@ class usercenter
     }
 
     /**
+     * SQL注入检查
+     * @param $Sql_Str
+     * @return string
+     */
+    function inject_check($Sql_Str) {
+        $check=preg_match('/select|insert|update|delete|\'|\\*|\*|\.\.\/|\.\/|union|into|load_file|outfile/i',$Sql_Str);
+        if ($check) {
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+
+    /**
      * 判断是否为移动端 via:http://t.cn/EtkiCVd
      * @return bool
      */
@@ -87,10 +101,48 @@ class usercenter
      * todo:使用时前面要加$Config["website"]["static"]
      */
     public function get_avatar($uid, $conn){
-        if($conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->num_rows <= 0){
+        if($conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '{$uid}'")->num_rows <= 0){
             return 'img/akari.jpg';
         }else{
-            return $conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '". $uid."'")->fetch_assoc()['avatar_url'];
+            return $conn->query("SELECT * FROM `qc_avatar` WHERE `uid` = '{$uid}'")->fetch_assoc()['avatar_url'];
         }
+    }
+
+    /**
+     * 获取用户真实ip
+     * @return string
+     */
+    function get_real_ip(){
+        $ip=false;
+        if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+            $ip = $_SERVER["HTTP_CLIENT_IP"];
+        }
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ips = explode (", ", $_SERVER['HTTP_X_FORWARDED_FOR']);
+            if ($ip) { array_unshift($ips, $ip); $ip = FALSE; }
+            for ($i = 0; $i < count($ips); $i++) {
+                if (!eregi ("^(10|172\.16|192\.168)\.", $ips[$i])) {
+                    $ip = $ips[$i];
+                    break;
+                }
+            }
+        }
+        return ($ip ? $ip : $_SERVER['REMOTE_ADDR']);
+    }
+
+    /**
+     * 写日志
+     * @param object $conn 数据库连接信息
+     * @param string $type 日志类型
+     * @param string $detail 日志详情
+     * @param int $user 用户uid
+     * @param bool $result 结果
+     * @return bool
+     */
+    public function write_log($conn, $type, $detail, $user=0, $result=true){
+        $this->inject_check($_SERVER['HTTP_USER_AGENT']);
+        return $conn->query("INSERT INTO `qc_log` (`type`, `detail`, `ip`, `uid`, `env`, `result`, `time`)
+VALUES ('{$type}', '{$detail}', '{$this->get_real_ip()}', '{$user}', '{$_SERVER['HTTP_USER_AGENT']}', '{$result}', '". time() ."');");
+
     }
 }
