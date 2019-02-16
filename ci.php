@@ -39,7 +39,7 @@ $conn->query("ALTER DATABASE `". $Config["database"]["name"] ."` COLLATE utf8_sw
 //qc_group 用户组表
 $conn->query("CREATE TABLE `qc_group` (
   `gid` tinyint NOT NULL COMMENT '用户组ID',
-  `name` char NOT NULL COMMENT '用户组名称'
+  `name` tinytext NOT NULL COMMENT '用户组名称'
 );");
 $conn->query("ALTER TABLE `qc_group`
 ADD PRIMARY KEY `gid` (`gid`);");
@@ -88,7 +88,7 @@ $conn->query("CREATE TABLE `qc_phone_sms` (
 //qc_user_detail 用户详情信息表
 $conn->query("CREATE TABLE `qc_user_detail` (
   `uid` int(11) NOT NULL COMMENT '唯一指定Uid',
-  `realname` char NOT NULL COMMENT '用户真实姓名',
+  `realname` tinytext NOT NULL COMMENT '用户真实姓名',
   `education` tinyint NOT NULL COMMENT '学历（1：小学，2：初中，3：高中，4：大学，5：其他）',
   `grade` tinyint NOT NULL COMMENT '年级',
   FOREIGN KEY (`uid`) REFERENCES `qc_user` (`uid`)
@@ -96,12 +96,13 @@ $conn->query("CREATE TABLE `qc_user_detail` (
 //qc_log 日志表
 $conn->query("CREATE TABLE `qc_log` (
   `lgid` int NOT NULL COMMENT '日志Id' AUTO_INCREMENT PRIMARY KEY,
-  `type` char NOT NULL COMMENT '日志类型',
+  `type` tinytext NOT NULL COMMENT '日志类型',
   `detail` text NOT NULL COMMENT '日志内容',
-  `ip` char NOT NULL COMMENT '操作IP',
+  `ip` text NOT NULL COMMENT '操作IP',
   `uid` int NOT NULL COMMENT '操作uid',
   `env` text NOT NULL COMMENT '操作环境',
-  `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）'
+  `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）',
+  `time` int NOT NULL COMMENT '操作时间（时间戳）'
 );");
 
 $conn->close();
