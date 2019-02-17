@@ -151,7 +151,7 @@ class usercenter
             ];
             $server = json_encode($server);
             return $conn->query("INSERT INTO `qc_visit_log` (`method`, `ip`, `uid`, `server`, `time`, `url`)
-VALUES ('{$_SERVER['REQUEST_METHOD']}', '{$this->get_real_ip()}', '{$user}', '{$server}', '{time()}', '{$detail}');");
+VALUES ('{$_SERVER['REQUEST_METHOD']}', '{$this->get_real_ip()}', '{$user}', '{$server}', '". time() ."', '{$detail}');");
         }else {
             return $conn->query("INSERT INTO `qc_log` (`type`, `detail`, `ip`, `uid`, `env`, `result`, `time`)
 VALUES ('{$type}', '{$detail}', '{$this->get_real_ip()}', '{$user}', '{$_SERVER['HTTP_USER_AGENT']}', '{$result}', '" . time() . "');");
