@@ -116,6 +116,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                         'code'   => 200,
                         'msg'    => '注册成功'
                     ];
+                    $usercenter->write_log($conn, 'register', 'registered successfully', $data['uid'], '1');
                     die(json_encode($return));
 
                 }else{
@@ -214,6 +215,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                         'code'   => 1000,
                         'msg'    => '登录成功，将在3秒后前往用户中心',
                     ];
+                    $usercenter->write_log($conn, 'login', 'login successfully', $sqlResult['uid'], 1);
                     if($_POST['remember'] == 0){
                         $Expire = 0;
                     }else{
@@ -224,6 +226,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     $usercenter->set_cookie('expire_time', time()+3600*24*30, $Expire , $Config["website"]["https"]);
                     die(json_encode($return));
                 }else{
+                    $usercenter->write_log($conn, 'wrong_psw', json_encode($_POST), '0', '-1');
                     $return = [
                         'status' => 'failed',
                         'code'   => -102,
@@ -250,6 +253,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                 $Errinfo = '来源不正确';
                 require_once ("views/error.php");
             }else{
+                $usercenter->write_log($conn, 'logout', $Uid, $Uid, '1');
                 $usercenter->set_cookie('uid', 0, -100 , $Config["website"]["https"]);
                 $usercenter->set_cookie('ukey', password_hash(time() , PASSWORD_DEFAULT), -100 , $Config["website"]["https"]);
                 $usercenter->set_cookie('expire_time', time(), -100 , $Config["website"]["https"]);
