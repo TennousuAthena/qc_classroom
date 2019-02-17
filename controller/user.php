@@ -89,6 +89,19 @@ switch ($Parameters['method']){
                 }
                 //从数据库中查询lid,电话号,验证码，和用户输入进行比对
                 $data = $conn->query('SELECT * FROM `qc_phone_sms` WHERE `lid` = \''. $_POST['lid'] .'\' LIMIT 1')->fetch_assoc();
+                //防止暴力破出验证码，检验频率
+                $time = time() - 100;
+                $row = $conn->query('SELECT * FROM `qc_log` WHERE `result` < \'0\' AND `ip` = \''. get_real_ip() .'\' AND `time` > \''. $time .'\' LIMIT 10');
+                if($row->num_rows > 5){
+                    $return = [
+                        'status' => 'failed',
+                        'code'   => -208,
+                        'msg'    => '尝试次数过多'
+                    ];
+                    $usercenter->write_log($conn, 'request_too_frequent', ' ', $Uid, '-208');
+                    die(json_encode($return));
+                }
+
                 if($_POST['phone'] == $data['target'] && $_POST['code'] == $data['code'] && $data['flag'] != 1){
                     //验证码是否过期
                     if(time() - $data['sendTime'] > 10 * 60){
@@ -120,9 +133,10 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     die(json_encode($return));
 
                 }else{
+                    $usercenter->write_log($conn, 'wrong_sms_code', ' ', $Uid, '-207');
                     $return = [
                         'status' => 'failed',
-                        'code'   => -204,
+                        'code'   => -207,
                         'msg'    => '短信验证码错误'
                     ];
                     die(json_encode($return));
