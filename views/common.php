@@ -79,8 +79,10 @@ class View {
     }
 }
 //写访问日志
-$ref = (GetCurUrl() == $_SERVER['HTTP_REFERER']) ? '' : 'from {'. $_SERVER['HTTP_REFERER'] .'}';
-$usercenter->write_log($conn, 'visit', $_SERVER['REQUEST_METHOD']. ' ' . GetCurUrl() . ' ' . $ref , $Uid, true);
+if(!strstr($_SERVER['HTTP_USER_AGENT'], 'curl')) {
+    $ref = (GetCurUrl() == $_SERVER['HTTP_REFERER']) ? '' : 'from {' . $_SERVER['HTTP_REFERER'] . '}';
+    $usercenter->write_log($conn, 'visit', $_SERVER['REQUEST_METHOD'] . ' ' . GetCurUrl() . ' ' . $ref, $Uid, true);
+}
 
 $view = new View();
 $view->is_debug = DEBUG;
