@@ -104,7 +104,16 @@ $conn->query("CREATE TABLE `qc_log` (
   `result` tinyint NOT NULL COMMENT '操作结果（小于0失败，大于0成功）',
   `time` int NOT NULL COMMENT '操作时间（时间戳）'
 );");
-
+//qc_visit_log 日志表
+$conn->query("CREATE TABLE `qc_visit_log` (
+  `vlid` int NOT NULL COMMENT '日志主键' AUTO_INCREMENT PRIMARY KEY,
+  `method` tinytext NOT NULL COMMENT '请求方法',
+  `ip` tinytext NOT NULL COMMENT '请求IP',
+  `uid` int NOT NULL COMMENT '操作用户',
+  `server` text NOT NULL COMMENT '\$_SERVER',
+  `time` int NOT NULL COMMENT '时间',
+  `url` text NOT NULL COMMENT '请求地址'
+);");
 $conn->close();
 echo "青草课堂 ：构建测试成功! \n";
 ?>
