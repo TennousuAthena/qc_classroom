@@ -141,8 +141,20 @@ class usercenter
      */
     public function write_log($conn, $type, $detail, $user=0, $result=true){
         $this->inject_check($_SERVER['HTTP_USER_AGENT']);
-        return $conn->query("INSERT INTO `qc_log` (`type`, `detail`, `ip`, `uid`, `env`, `result`, `time`)
-VALUES ('{$type}', '{$detail}', '{$this->get_real_ip()}', '{$user}', '{$_SERVER['HTTP_USER_AGENT']}', '{$result}', '". time() ."');");
-
+        if($type == 'visit'){
+            $server = [
+                'HTTP_HOST' => $_SERVER['HTTP_HOST'],
+                'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
+                'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
+                'REMOTE_PORT' => $_SERVER['REMOTE_PORT'],
+                'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR']
+            ];
+            $server = json_encode($server);
+            return $conn->query("INSERT INTO `qc_visit_log` (`method`, `ip`, `uid`, `server`, `time`, `url`)
+VALUES ('{$_SERVER['REQUEST_METHOD']}', '{$this->get_real_ip()}', '{$user}', '{$server}', '{time()}', '{$detail}');");
+        }else {
+            return $conn->query("INSERT INTO `qc_log` (`type`, `detail`, `ip`, `uid`, `env`, `result`, `time`)
+VALUES ('{$type}', '{$detail}', '{$this->get_real_ip()}', '{$user}', '{$_SERVER['HTTP_USER_AGENT']}', '{$result}', '" . time() . "');");
+        }
     }
 }

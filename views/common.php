@@ -80,8 +80,7 @@ class View {
 }
 //写访问日志
 if(!strstr($_SERVER['HTTP_USER_AGENT'], 'curl')) {
-    $ref = (GetCurUrl() == $_SERVER['HTTP_REFERER']) ? '' : 'from {' . $_SERVER['HTTP_REFERER'] . '}';
-    $usercenter->write_log($conn, 'visit', $_SERVER['REQUEST_METHOD'] . ' ' . GetCurUrl() . ' ' . $ref, $Uid, true);
+    $usercenter->write_log($conn, 'visit', GetCurUrl(), $Uid);
 }
 
 $view = new View();
