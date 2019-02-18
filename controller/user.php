@@ -19,8 +19,10 @@ if(!defined('DEBUG')) {
 $usercenter = new usercenter();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     header('Content-Type: application/json');
+    //禁止缓存
+    header('Cache-Control: no-cache, must-revalidate');
+    header('Pragma: no-cache');
 }
-$conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"], $Config["database"]["name"]);
 switch ($Parameters['method']){
     case '':
         {
@@ -292,7 +294,6 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
         }
     default:
         {
-            http_response_code(404);
             $Errinfo = '页面不存在';
             require_once ("views/error.php");
         }

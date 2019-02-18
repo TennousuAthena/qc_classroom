@@ -15,3 +15,27 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+//禁止缓存
+header('Cache-Control: no-cache, must-revalidate');
+header('Pragma: no-cache');
+//json格式
+header('Content-Type: application/json');
+//引入usercenter
+$usercenter = new usercenter();
+//数据库
+$conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
+    $Config["database"]["name"]);
+switch ($Parameters['mod']){
+    case 'videoTranscoding':{
+
+        break;
+    }
+    default:{
+        $return = [
+            'status' => 'failed',
+            'code'   => -99,
+            'msg'    => '未知模块'
+        ];
+        die(json_encode($return));
+    }
+}

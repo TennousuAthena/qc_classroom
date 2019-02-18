@@ -25,8 +25,15 @@ $usercenter = new usercenter();
         <div class="layui-header">
             <div class="layui-logo"><a href="/"><img src="<?php echo $Config["website"]["static"]; ?>img/logo_.png" style="height: 60px;"></a> </div>
             <ul class="layui-nav layui-layout-left layui-hide-xs">
-                <li class="layui-nav-item"><a href="/">首页</a></li>
-                <li class="layui-nav-item"><a href="">我的课程</a></li>
+                <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/') echo "layui-this" ?>"><a href="/"><em class="layui-icon layui-icon-home"> </em>首页</a></li>
+                <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
+                <?php }?>
+                <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>"><a href="/teacher/"><em class="layui-icon layui-icon-username"> </em> 教师中心</a></li>
+                <?php }else{ ?>
+                <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="/user/myCourse"><em class="layui-icon layui-icon-username"> </em> 我的课程</a></li>
+            <?php } ?>
             </ul>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
@@ -35,7 +42,8 @@ $usercenter = new usercenter();
                         <?php echo $Uinfo['username']; ?>
                     </a>
                     <dl class="layui-nav-child">
-                        <?php if($Is_login){ ?><dd><a href="###">基本资料</a></dd>
+                        <?php if($Is_login){ ?>
+                        <dd><a href="###">基本资料</a></dd>
                         <dd><a href="###">安全设置</a></dd>
                         <dd><a href="/user/logout">退出登录</a></dd>
                         <?php }else{ ?>

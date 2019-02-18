@@ -53,12 +53,13 @@ $Routes['GET']['/user/(?<method>.*)']                                           
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 $Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';
 $Routes['POST']['/api/(?<mod>.*)']                                                         = 'api';
-$Routes['GET']['/callback/(?<methmod>.*)']                                                 = 'callback';
+$Routes['POST']['/callback/(?<mod>.*)']                                                    = 'callback';
+$Routes['GET']['/callback/(?<mod>.*)']                                                     = 'callback';
+$Routes['GET']['/teacher/(?<mod>.*)']                                                      = 'teacher';
+
 
 
 //这里是Routes End
-
-
 $UrlPath = 'home';
 $ParametersVariableName = '_' . $_SERVER['REQUEST_METHOD'];
 foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {

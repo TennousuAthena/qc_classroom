@@ -42,7 +42,7 @@ class usercenter
     }
 
     /**
-     * 判断是否为移动端 via:http://t.cn/EtkiCVd
+     * 判断是否为移动端 via:
      * @return bool
      */
     public function is_mobile() {
@@ -155,6 +155,20 @@ VALUES ('{$_SERVER['REQUEST_METHOD']}', '{$this->get_real_ip()}', '{$user}', '{$
         }else {
             return $conn->query("INSERT INTO `qc_log` (`type`, `detail`, `ip`, `uid`, `env`, `result`, `time`)
 VALUES ('{$type}', '{$detail}', '{$this->get_real_ip()}', '{$user}', '{$_SERVER['HTTP_USER_AGENT']}', '{$result}', '" . time() . "');");
+        }
+    }
+
+    /**
+     * 获取用户所在组
+     * @param object $conn 数据库连接信息
+     * @param int $uid uid
+     * @return int
+     */
+    public function get_user_group($conn, $uid){
+        if($uid === 0){
+            return 0;
+        }else {
+            return $conn->query("SELECT * FROM `qc_user` WHERE `uid` = '{$uid}' LIMIT 1")->fetch_assoc()['gid'];
         }
     }
 }
