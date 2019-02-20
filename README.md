@@ -5,7 +5,7 @@
 [![Telegram](https://img.shields.io/badge/Telegram-Join--the--chat-green.svg?logo=telegram&style=for-the-badge)](https://t.me/joinchat/IoZlgxelV02lQRfJSxDCtA)
 ![PHP](https://img.shields.io/badge/PHP-v5.6-green.svg?logo=php&style=for-the-badge)
 
-**(辽宁省第三十四界青少年创新大赛参赛作品)**
+**(辽宁省第三十四届青少年创新大赛参赛作品)**
 ## 开发&使用 文档
 [Gitbook](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/)
 
