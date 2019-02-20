@@ -56,7 +56,8 @@ $Routes['POST']['/api/(?<mod>.*)']                                              
 $Routes['POST']['/callback/(?<mod>.*)']                                                    = 'callback';
 $Routes['GET']['/callback/(?<mod>.*)']                                                     = 'callback';
 $Routes['GET']['/teacher/(?<mod>.*)']                                                      = 'teacher';
-
+$Routes['POST']['/teacher/(?<mod>.*)']                                                     = 'teacher';
+$Routes['GET']['/doc/(?<name>.*)']                                                         = 'document';
 
 
 //这里是Routes End
