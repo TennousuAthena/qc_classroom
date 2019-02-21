@@ -5,7 +5,7 @@
 [![Telegram](https://img.shields.io/badge/Telegram-Join--the--chat-green.svg?logo=telegram&style=for-the-badge)](https://t.me/joinchat/IoZlgxelV02lQRfJSxDCtA)
 ![PHP](https://img.shields.io/badge/PHP-v5.6-green.svg?logo=php&style=for-the-badge)
 
-**(辽宁省第三十四界青少年创新大赛参赛作品)**
+**(辽宁省第三十四届青少年创新大赛参赛作品)**
 ## 开发&使用 文档
 [Gitbook](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/)
 
@@ -24,15 +24,6 @@
 - 验证码提供： [Geetest](https://www.geetest.com/)
 
 ## 许可
-本项目使用 GPL v3协议进行许可，
-协议具体内容非常冗长，你可以从/LICENSE_ZH查看。
+由于项目时间紧张，存在诸多漏洞，故本项目使用 WTFPL 协议进行许可，简而言之，你™想干什么就干什么。
 
-简而言之，它允许用户合法复制，分发和修改软件，但衍生代码的分发需开源并且也要遵守此协议。
-
-#### 具体要求
-- 修改后的源码也需要公开
-- 版权及协议也要于此协议一致
-- 修改后，需要在相应的文件做说明，
-- 允许商用，分发，修改，专利授权，私用
-- 作者不承担因使用此项目造成任何影响
-- 禁止在软件分发传播过程中附加上原来没有的协议条款
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom?ref=badge_large)
