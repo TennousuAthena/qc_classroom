@@ -61,10 +61,17 @@ $Routes['GET']['/doc/(?<name>.*)']                                              
 
 
 //这里是Routes End
+
+if(strpos($_SERVER['REQUEST_URI'],"?")){
+    $URI = substr($_SERVER['REQUEST_URI'],0, strripos($_SERVER['REQUEST_URI'], '?'));
+}else{
+    $URI = $_SERVER['REQUEST_URI'];
+}
+
 $UrlPath = 'home';
 $ParametersVariableName = '_' . $_SERVER['REQUEST_METHOD'];
 foreach ($Routes[$_SERVER['REQUEST_METHOD']] as $URL => $Controller) {
-    if (preg_match("#^" . $URL . "$#i", $_SERVER['REQUEST_URI'], $Parameters)) {
+    if (preg_match("#^" . $URL . "$#i", $URI, $Parameters)) {
         $NotFound = false;
         $Parameters = array_merge($Parameters, $HTTPParameters);
         foreach ($Parameters as $Key => $Value) {
