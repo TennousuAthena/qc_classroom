@@ -89,3 +89,6 @@ composer.lock
 
 #配置文件
 config.php
+
+#编译产生文件
+views/compile/**
