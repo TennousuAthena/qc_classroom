@@ -96,8 +96,17 @@
     100% { opacity: 0; }
 }
 
-.qc_footer{
-    position: absolute;
-    bottom: 0;
-    width:100%;
+html, body {
+    height: 100%;
+}
+.wrap{
+    min-height: 100%;
+    margin-bottom: -69.6px;
+}
+.wrap:after {
+    content: "";
+    display: block;
+}
+.qc_footer, .wrapper:after {
+    height: 69.6px;
 }

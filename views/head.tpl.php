@@ -27,3 +27,4 @@ if(!defined('DEBUG')) {
 
     <?php $view->load_js("../layui.js"); ?>
     <?php $view->load_js("main.js"); ?>
+    <div class="wrap">

@@ -16,6 +16,7 @@ if(!defined('DEBUG')) {
     exit('Access Denied');
 }
 ?>
+</div>
 <footer class="qc_footer">
     <div class="layui-bg-gray" style="line-height: 5em">
         <p style="text-align: center;"> &copy <a href="https://blog.qmcmc.cn" target="_blank" title="前往作者Blog"> 青草</a> ·<a href="https://gitee.com/qcmc/qc_classrom" target="_blank" rel="nofollow" title="查看项目源代码"> 课堂 </a>
