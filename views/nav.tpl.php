@@ -34,9 +34,8 @@ $usercenter = new usercenter();
                 <?php }?>
                 <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>"><a href="/teacher/"><em class="layui-icon layui-icon-username"> </em> 教师中心</a></li>
-                <?php }else{ ?>
-                <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="/user/myCourse"><em class="layui-icon layui-icon-username"> </em> 我的课程</a></li>
-            <?php } ?>
+                <?php } ?>
+                <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="/user/myCourse"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
             </ul>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
