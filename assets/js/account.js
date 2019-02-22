@@ -1,7 +1,7 @@
 switch (window.location.pathname) {
     case '/user/login':{
         //登录功能处理
-        let log = function (captchaObj) {
+        let login = function (captchaObj) {
             layer.load(2);
             captchaObj.appendTo('#captcha');
             captchaObj.onReady(function () {
@@ -83,7 +83,7 @@ switch (window.location.pathname) {
                     product: "popup",
                     width: "300px",
                     https: true
-                }, log);
+                }, login);
             }
         });
         break;
