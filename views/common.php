@@ -30,6 +30,7 @@ if($Uid > 0){
     $Is_login = false;
     $Uinfo['username'] = '未登录用户';
 }
+require_once ('data/title.db.php');
 class View {
     /**
      * @var bool 是否开启随机数防缓存，方便开发
