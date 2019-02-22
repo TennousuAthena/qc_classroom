@@ -23,3 +23,20 @@ if(!file_exists($targetFile)){
 }else{
     require_once ($targetFile);
 }
+echo '<div class="layui-container">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/qcminecraft/qc_classrom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
+<script>
+    let gitment = new Gitment({
+        id: window.location.pathname,
+        owner: \'qcminecraft\',
+        repo: \'qc_classroom-comment\',
+        oauth: {
+            client_id: \'146880877967adb358f9\',
+            client_secret: \'b735e411a514ca5d5037dc6fb1be42e2bb5b57ba\',
+        },
+    })
+    gitment.render(\'container\')
+</script>';

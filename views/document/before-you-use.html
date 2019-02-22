@@ -8,20 +8,3 @@
     <br />如果依然不能解决问题，请提交<a href="https://github.com/qcminecraft/qc_classrom/issues" target="_blank">Issue</a>，并且告知浏览器的具体版本型号和操作系统版本。我们会尽力为您排查解决。
     </p>
 </div>
-<div class="layui-container">
-    <div id="container"></div>
-</div>
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<?php $view->load_js('gitment.js'); ?>
-<script>
-    let gitment = new Gitment({
-        id: window.location.pathname,
-        owner: 'qcminecraft',
-        repo: 'qc_classroom-comment',
-        oauth: {
-            client_id: '146880877967adb358f9',
-            client_secret: 'b735e411a514ca5d5037dc6fb1be42e2bb5b57ba',
-        },
-    })
-    gitment.render('container')
-</script>
