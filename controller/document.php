@@ -15,7 +15,7 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-$targetFile = 'views/document/'.$Parameters['name'].'.html';
+$targetFile = 'views/document/'.$Parameters['name'].'.phtml';
 if(!file_exists($targetFile)){
     http_response_code(404);
     $Errinfo = '文档不存在';
@@ -25,7 +25,7 @@ if(!file_exists($targetFile)){
 }
 echo '<div class="layui-container">
     <div id="container"></div>
-</div>
+</div><br /><br /><br /><br /><br />
 <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/qcminecraft/qc_classrom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
 <script>
