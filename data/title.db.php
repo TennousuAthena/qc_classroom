@@ -18,5 +18,7 @@ $title = [
     '/user/register'       =>  '注册',
     '/user/logout'         =>  '退出登录',
     '/teacher/'            =>  '教师中心',
-    '/teacher/createCourse'=>  '创建课程'
+    '/teacher/createCourse'=>  '创建课程',
+    '/doc/'                =>  '文档中心',
+    '/doc/before-you-use'  =>  '使用必读',
 ];
