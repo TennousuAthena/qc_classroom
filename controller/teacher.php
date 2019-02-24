@@ -35,6 +35,11 @@ switch ($Parameters['mod']){
     }
     case 'createCourse':{
         //创建课程
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            require_once ('views/teacher/createCourse.phtml');
+        }elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+        }
         break;
     }
     default:{

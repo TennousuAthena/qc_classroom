@@ -1,0 +1,180 @@
+<?php
+/**
+ *  ___   ____ _
+ * / _ \ / ___| | __ _ ___ ___ _ __ ___   ___  _ __ ___
+ *| | | | |   | |/ _` / __/ __| '__/ _ \ / _ \| '_ ` _ \
+ *| |_| | |___| | (_| \__ \__ \ | | (_) | (_) | | | | | |
+ * \__\_\\____|_|\__,_|___/___/_|  \___/ \___/|_| |_| |_|
+ * 青草课堂 - createCourse.phtml
+ * Copyright (c) 2015 - 2019.,QCTech ,All rights reserved.
+ * Created by: QCTech
+ * Created Time: 2019-02-22 - 19:48
+ */
+?>
+    <div class="layui-card layui-container">
+        <div class="layui-card-header">创建课程</div>
+        <div class="layui-card-body">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-form"></i>课程名称 </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="courseName" id="courseName" required  lay-verify="required" placeholder="请输入课程名称" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">建议使用中文名</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">课程类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type" id="type-live" value="type-live" title="直播课：即时与学生互动教学" checked>
+                        <input type="radio" name="type" id="type-video" value="type-video" title="上传课程视频，并在指定时刻放送，拥有的学生可回看">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-read"></i>科目</label>
+                    <div class="layui-input-inline">
+                        <select id="educ" lay-filter="subject" name="subject" lay-search>
+                            <option value="">请选择学科</option>
+                            <option value="1">语文</option>
+                            <option value="2">数学</option>
+                            <option value="3">外语</option>
+                            <option value="4">物理</option>
+                            <option value="5">化学</option>
+                            <option value="6">历史</option>
+                            <option value="7">政治</option>
+                            <option value="8">生物</option>
+                            <option value="9">地理</option>
+                            <option value="10">信息</option>
+                            <option value="11">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i>验证码</label>
+                    <div class="layui-input-block">
+                        <div id="captcha">
+                            <div id="captcha-text">
+                                验证码 安全组件加载中
+                            </div>
+                            <div id="captcha-wait">
+                                <div class="loading">
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                    <div class="loading-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" id="btn-submit">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php $view->load_js("gt.min.js"); ?>
+<script type="text/javascript">
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#date',
+            min: 1,
+            max: 180,
+        });
+    });
+
+    let createCourse = function (captchaObj) {
+        layer.load(2);
+        captchaObj.appendTo('#captcha');
+        captchaObj.onReady(function () {
+            layer.closeAll('loading');
+            $("#captcha-text").remove();
+            $("#captcha-wait").remove();
+        });
+        $("#btn-reset").click(function () {
+            captchaObj.reset();
+        });
+        $('#btn-submit').click(function() {
+            var result = captchaObj.getValidate();
+            if (!result) {
+                return layer.msg("请完成验证", {icon:2})
+            }
+            if (username !== "" && password !== "" && (remember===1 || remember===0)) {
+                layer.load(2);
+                $.ajax({
+                    type: "POST",
+                    url: "/teacher/createCourse",
+                    dataType: "JSON",
+                    timeout: 5000,
+                    data: {
+
+                        "geetest_challenge": result.geetest_challenge,
+                        "geetest_validate": result.geetest_validate,
+                        "geetest_seccode": result.geetest_seccode
+                    },
+                    error: function(obj){
+                        layer.closeAll('loading');
+                        layer.msg("发生错误：" + obj.statusText , {icon:2})
+                        captchaObj.reset();
+                    },
+                    success: function(data) {
+                        layer.closeAll('loading');
+                        if(data.status === "failed" || data.code < 0){
+                            if (data.code === -101){
+                                $('#username').val('');
+                                $('#password').val('');
+                            }
+                            layer.msg(data.msg , {icon:2});
+                            captchaObj.reset();
+                        }else{
+                            //登录成功
+                            layer.msg(data.msg, {icon:1});
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2000)
+                        }
+                    }})
+            } else if(username === "") {
+                captchaObj.reset();
+                layer.msg("用户名不能为空", {icon: 2})
+            } else if(password === "") {
+                captchaObj.reset();
+                layer.msg("密码不能为空", {icon: 2})
+            } else{
+                captchaObj.reset();
+                layer.msg("少年你干了什么？")
+            }
+        })
+    };
+    //请求验证码
+    $.ajax({
+        url: "/api/captcha",
+        type: "post",
+        dataType: "json",
+        success: function (data) {
+            if(!data.success){
+                layer.msg('验证码出错！', {icon:2});
+                return null;
+            }
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机
+                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+                product: "popup",
+                width: "300px",
+                https: true
+            }, createCourse);
+        }
+    });
+</script>
