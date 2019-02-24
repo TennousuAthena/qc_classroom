@@ -114,6 +114,30 @@ $conn->query("CREATE TABLE `qc_visit_log` (
   `time` int NOT NULL COMMENT '时间',
   `url` text NOT NULL COMMENT '请求地址'
 );");
+//qc_course_set 课集表
+$conn->query("CREATE TABLE `qc_course_set` (
+  `cid` int NOT NULL COMMENT '课程集ID' AUTO_INCREMENT PRIMARY KEY,
+  `name` text NOT NULL COMMENT '课程标题',
+  `subject` tinytext NOT NULL COMMENT '学科',
+  `teacher` int(11) NOT NULL COMMENT '主讲教师',
+  `create_time` int NOT NULL COMMENT '课程创建时间',
+  `start_time` int NOT NULL COMMENT '课程开始时间',
+  `type` tinyint NOT NULL COMMENT '类型，1:直播课，2:录播课',
+  `poster_url` text NOT NULL COMMENT '封面url',
+  FOREIGN KEY (`teacher`) REFERENCES `qc_user` (`uid`)
+);");
+//qc_course 课程 表
+$conn->query("CREATE TABLE `qc_course` (
+  `scid` int NOT NULL COMMENT '课程ID' AUTO_INCREMENT PRIMARY KEY,
+  `cid` int(11) NOT NULL COMMENT '所属课集',
+  `teacher` int(11) NOT NULL COMMENT '上课老师',
+  `stream_id` tinytext NOT NULL COMMENT '直播流ID',
+  `start_time` int NOT NULL COMMENT '开课时间',
+  `over_time` int NOT NULL COMMENT '结束时间',
+  `file_url` text NOT NULL COMMENT '录播文件URL',
+  FOREIGN KEY (`cid`) REFERENCES `qc_course_set` (`cid`),
+  FOREIGN KEY (`teacher`) REFERENCES `qc_user` (`uid`)
+);");
 $conn->close();
 echo "青草课堂 ：构建测试成功! \n";
 ?>
