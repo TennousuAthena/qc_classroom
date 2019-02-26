@@ -17,7 +17,7 @@
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
 <script>
-    const vid = 'https://vid.edu.qmcmc.cn/test/test_video/%E9%BA%BB%E6%9E%9D%20%E5%87%86%C3%97%E3%82%84%E3%81%AA%E3%81%8E%E3%81%AA%E3%81%8E%20%E3%80%8C%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89%E3%80%8D.mp4';
+    const vid = '//vid.edu.qmcmc.cn/test/test_video/%E9%BA%BB%E6%9E%9D%20%E5%87%86%C3%97%E3%82%84%E3%81%AA%E3%81%8E%E3%81%AA%E3%81%8E%20%E3%80%8C%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89%E3%80%8D.mp4';
     const dp = new DPlayer({
         container: document.getElementById('player'),
         screenshot: true,
@@ -45,7 +45,7 @@
         subtitle: {
             color: '#cdcdcd',
             fontSize : '3vw',
-            url: 'http://vid.edu.qmcmc.cn/test/test_video/%E7%BB%88%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89.vtt'
+            url: '//vid.edu.qmcmc.cn/test/test_video/%E7%BB%88%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89.vtt'
         },
     });
     $('.dplayer-logo').addClass('player-logo');
