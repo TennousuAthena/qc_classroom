@@ -111,6 +111,7 @@ html, body {
     height: 69.6px;
 }
 .player-logo {
+    width: 25%;
     pointer-events: none;
     position: absolute;
     right: 20px;
