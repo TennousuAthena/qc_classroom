@@ -12,45 +12,29 @@
  */
 if(DEMO){
 ?>
+
     <div class="layui-container">
-    <div id="player"></div>
+        <div class="layui-carousel" id="carousel-home">
+            <div carousel-item>
+                <div id="carousel-1">
+                    <img alt="海老师物理课堂" title="海老师物理课堂" src="https://i.loli.net/2019/02/26/5c75319f23a70.png" style="clear: both; display: block;margin:auto;" class="layui-hide-lg" />
+                    <img alt="海老师物理课堂" title="海老师物理课堂" src="https://i.loli.net/2019/02/26/5c7531b6c8b7a.png" style="clear: both; display: block;margin:auto;" />
+                </div>
+                <div>
+                    <img alt="青草课堂测试视频" title="青草课堂测试视频" src="https://i.loli.net/2019/02/26/5c753a5954b26.png" style="clear: both; display: block;margin:auto;" class="layui-hide-lg" />
+                    <img alt="青草课堂测试视频" title="青草课堂测试视频" src="https://i.loli.net/2019/02/26/5c753a6db7591.png" style="clear: both; display: block;margin:auto;" />
+                </div>
+            </div>
+        </div>
     </div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
-<style>
-    .player-logo {
-        pointer-events: none;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        max-width: 150px;
-        max-height: 50px;
-    }
-    .player-logo img {
-        max-width: 100%;
-        max-height: 100%;
-        background: none;
-    }
-</style>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
 <script>
-    const dp = new DPlayer({
-        container: document.getElementById('player'),
-        screenshot: true,
-        theme: '#5FB878',
-        mutex: true,
-        logo: '/assets/img/logo_.png',
-        video: {
-            url: '/data/麻枝 准×やなぎなぎ 「終わりの世界から」.mp4',
-            //pic: 'demo.jpg',
-            //thumbnails: 'thumbnails.jpg'
-        },
-        subtitle: {
-            color: '#cdcdcd',
-            fontSize : '40px',
-            url: '/data/%E7%BB%88%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89.vtt'
-        },
+    layui.use('carousel', function(){
+        const carousel = layui.carousel;
+        carousel.render({
+            elem: '#carousel-home'
+            ,width: '100%' //设置容器宽度
+            ,anim: 'fade'
+        });
     });
-    $('.dplayer-logo').addClass('player-logo');
-    $('.dplayer-logo').removeClass('dplayer-logo');
 </script>
 <?php } ?>

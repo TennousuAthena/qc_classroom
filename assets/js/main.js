@@ -8,14 +8,11 @@ layui.use(['layer', 'form', 'util', 'element'], function(){
     //固定块
     util.fixbar({
         bar1: true
-        ,bar2: true
         ,css: {right: 10, bottom: 10}
         ,bgcolor: '#393D49'
         ,click: function(type){
             if(type === 'bar1'){
-                layer.msg('我也不知道我该说什么')
-            } else if(type === 'bar2') {
-                layer.msg('我更不知道了')
+                window.open('/doc/before-you-use');
             }
         }
     });
