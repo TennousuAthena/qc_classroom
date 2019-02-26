@@ -21,5 +21,6 @@ $title = [
     '/teacher/createCourse'=>  '创建课程',
     '/doc/'                =>  '文档中心',
     '/doc/before-you-use'  =>  '使用必读',
-    '/doc/privacy-policy'  =>  '隐私政策'
+    '/doc/privacy-policy'  =>  '隐私政策',
+    '/doc/timeline'        =>  '时间线'
 ];
