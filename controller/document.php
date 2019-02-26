@@ -22,8 +22,7 @@ if(!file_exists($targetFile)){
     require_once ("views/error.php");
 }else{
     require_once ($targetFile);
-}
-echo '<div class="layui-container">
+    echo '<div class="layui-container">
     <div id="container"></div>
 </div><br /><br /><br /><br /><br />
 <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
@@ -40,3 +39,4 @@ echo '<div class="layui-container">
     })
     gitment.render(\'container\')
 </script>';
+}
