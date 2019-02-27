@@ -41,6 +41,7 @@ if(!$Errinfo) {
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
     <script>
+        <?php if($data['type']==2 && $data['file_url']){   ?>
         const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
         const dp = new DPlayer({
             container: document.getElementById('player'),
@@ -80,6 +81,7 @@ if(!$Errinfo) {
         <?php if(!$Is_login){
             echo "dp.notice('登录后解锁原画画质哦~', 5000);";
         }?>
+        <?php } ?>
 
         $('.dplayer-logo').addClass('player-logo');
         $('.dplayer-logo').removeClass('dplayer-logo');
