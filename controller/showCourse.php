@@ -16,10 +16,16 @@ if($data['name'] == ''){
     $Errinfo = '课程不见了~';
     require_once ("views/error.php");
 }
+$base_url = $data['file_url'];
 if($Config["qcloud"]["CDN_KEY"]){
-    $video_url = $Config['domain']['video'].'/'.md5($Config["qcloud"]["CDN_KEY"].$data['file_url'].dechex(time())).'/'.dechex(time()).$data['file_url'];
+    $file_url = [
+        'origin'   => $Config['domain']['video'].CDNSign($data['file_url'], $Config["qcloud"]["CDN_KEY"]).$base_url,
+        '720p'     => $Config['domain']['video'].CDNSign($data['file_url'].'.f30.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f30.mp4',
+        '480p'     => $Config['domain']['video'].CDNSign($data['file_url'].'.f20.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f20.mp4',
+    ];
 }else{
-    $video_url = $Config['domain']['video'].$data['file_url'];
+    $Errinfo = '未启用CDN KEY';
+    require_once ("views/error.php");
 }
 if(!$Errinfo) {
     ?>
@@ -35,7 +41,7 @@ if(!$Errinfo) {
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
     <script>
-        const vid = '//<?php echo $video_url ?>';
+        const vid = '<?php echo $base_url ?>';
         const dp = new DPlayer({
             container: document.getElementById('player'),
             screenshot: true,
@@ -48,16 +54,16 @@ if(!$Errinfo) {
                     <?php if($Uid > 0) { ?>
                     {
                         name: '原画',
-                        url: vid,
+                        url: '<?php echo $file_url[0] ?>',
                         type: 'auto'
                     },
                         <?php }?>{
                         name: '720p',
-                        url: vid + '.f30.mp4',
+                        url: '<?php echo $file_url[1] ?>',
                         type: 'auto'
                     }, {
                         name: '480p',
-                        url: vid + '.f20.mp4',
+                        url: '<?php echo $file_url[2] ?>',
                         type: 'auto'
                     }],
                 pic: vid + '.0_0.p0.jpg',
