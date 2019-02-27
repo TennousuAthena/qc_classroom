@@ -118,6 +118,7 @@ $conn->query("CREATE TABLE `qc_visit_log` (
 $conn->query("CREATE TABLE `qc_course` (
   `scid` int NOT NULL COMMENT '课程ID' AUTO_INCREMENT PRIMARY KEY,
   `name` text NOT NULL COMMENT '课程标题',
+  `describe` text NOT NULL COMMENT '课程介绍',
   `type` tinyint NOT NULL COMMENT '类型，1:直播课，2:录播课',
   `subject` tinytext NOT NULL COMMENT '学科',
   `teacher` int(11) NOT NULL COMMENT '上课老师',
@@ -125,6 +126,7 @@ $conn->query("CREATE TABLE `qc_course` (
   `start_time` int NOT NULL COMMENT '开课时间',
   `over_time` int NOT NULL COMMENT '结束时间',
   `file_url` text NOT NULL COMMENT '录播文件URL',
+  `subtitle_url` tinytext NOT NULL COMMENT '字幕地址',
   FOREIGN KEY (`teacher`) REFERENCES `qc_user` (`uid`)
 );");
 $conn->close();
