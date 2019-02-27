@@ -48,7 +48,6 @@ $Config["qcloud"]["skey"]           = "";                                       
 $Config["qcloud"]["smsid"]          = "";                                           //腾讯云短信appid
 $Config["qcloud"]["smskey"]         = "";                                           //腾讯云短信Key
 $Config["qcloud"]["CDN_KEY"]        = "";                                           //腾讯云Token 鉴权Key
-$Config["qcloud"]["time"]           = 18000;                                        //腾讯云有效时间
 
 // ========================//
 //       Geetest配置        //

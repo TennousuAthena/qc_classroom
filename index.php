@@ -10,6 +10,8 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 12:13
  */
+
+header('Content-Type:text/html; charset=UTF-8');
 //关掉Notice
 error_reporting(E_ERROR);
 // 引入配置文件
