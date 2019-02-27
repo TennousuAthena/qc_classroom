@@ -19,9 +19,9 @@ if($data['name'] == ''){
 $base_url = $data['file_url'];
 if($Config["qcloud"]["CDN_KEY"]){
     $file_url = [
-        'origin'   => $Config['domain']['video'].CDNSign($data['file_url'], $Config["qcloud"]["CDN_KEY"]).$base_url,
-        '720p'     => $Config['domain']['video'].CDNSign($data['file_url'].'.f30.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f30.mp4',
-        '480p'     => $Config['domain']['video'].CDNSign($data['file_url'].'.f20.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f20.mp4',
+        'origin'   => '//'.$Config['domain']['video'].CDNSign($data['file_url'], $Config["qcloud"]["CDN_KEY"]).$base_url,
+        '720p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f30.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f30.mp4',
+        '480p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f20.mp4', $Config["qcloud"]["CDN_KEY"]).$base_url.'.f20.mp4',
     ];
 }else{
     $Errinfo = '未启用CDN KEY';
@@ -41,7 +41,7 @@ if(!$Errinfo) {
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
     <script>
-        const vid = '<?php echo $base_url ?>';
+        const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
         const dp = new DPlayer({
             container: document.getElementById('player'),
             screenshot: true,
@@ -54,16 +54,16 @@ if(!$Errinfo) {
                     <?php if($Uid > 0) { ?>
                     {
                         name: '原画',
-                        url: '<?php echo $file_url[0] ?>',
+                        url: '<?php echo $file_url['origin'] ?>',
                         type: 'auto'
                     },
                         <?php }?>{
                         name: '720p',
-                        url: '<?php echo $file_url[1] ?>',
+                        url: '<?php echo $file_url['720p'] ?>',
                         type: 'auto'
                     }, {
                         name: '480p',
-                        url: '<?php echo $file_url[2] ?>',
+                        url: '<?php echo $file_url['480p'] ?>',
                         type: 'auto'
                     }],
                 pic: vid + '.0_0.p0.jpg',
