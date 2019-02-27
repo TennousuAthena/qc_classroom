@@ -69,8 +69,7 @@ if(!$Errinfo) {
                         url: '<?php echo $file_url['480p'] ?>',
                         type: 'auto'
                     }],
-                pic: vid + '.0_0.p0.jpg',
-                thumbnails: vid + '.0_0.p0.jpg'
+                pic: vid + '.0_0.p0.jpg'
             },
             <?php if($data['subtitle_url']){ ?>
             subtitle: {
