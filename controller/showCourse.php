@@ -35,6 +35,7 @@ if(!$Errinfo) {
         <hr/>
         <div id="player"></div>
         <div class="layui-text">
+            <hr />
             <p><?php echo $data['describe'] ?></p>
         </div>
         <div style="height: 100px"></div>
