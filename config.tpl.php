@@ -47,6 +47,7 @@ $Config["qcloud"]["sid"]            = "";                                       
 $Config["qcloud"]["skey"]           = "";                                           //腾讯云密钥Key
 $Config["qcloud"]["smsid"]          = "";                                           //腾讯云短信appid
 $Config["qcloud"]["smskey"]         = "";                                           //腾讯云短信Key
+$Config["qcloud"]["CDN_KEY"]        = "";                                           //腾讯云Token 鉴权Key
 
 // ========================//
 //       Geetest配置        //
