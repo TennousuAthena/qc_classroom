@@ -47,6 +47,7 @@ if(!$Errinfo) {
             screenshot: true,
             theme: '#5FB878',
             mutex: true,
+            preload: 'auto',
             logo: '/assets/img/logo_.png',
             video: {
                 defaultQuality: 1,
@@ -76,6 +77,10 @@ if(!$Errinfo) {
                 url: '//<?php echo $Config['domain']['video'] . $data['subtitle_url'] ?>'
             },<?php } ?>
         });
+        <?php if(!$Is_login){
+            echo "dp.notice('登录后解锁原画画质哦~', 5000);";
+        }?>
+
         $('.dplayer-logo').addClass('player-logo');
         $('.dplayer-logo').removeClass('dplayer-logo');
     </script>
