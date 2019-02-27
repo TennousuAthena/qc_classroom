@@ -20,8 +20,8 @@ $base_url = $data['file_url'];
 if($Config["qcloud"]["CDN_KEY"]){
     $file_url = [
         'origin'   => '//'.$Config['domain']['video'].CDNSign($data['file_url'], $Config["qcloud"]["CDN_KEY"]),
-        '720p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f30.mp4', $Config["qcloud"]["CDN_KEY"]).'.f30.mp4',
-        '480p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f20.mp4', $Config["qcloud"]["CDN_KEY"]).'.f20.mp4',
+        '720p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f30.mp4', $Config["qcloud"]["CDN_KEY"]),
+        '480p'     => '//'.$Config['domain']['video'].CDNSign($data['file_url'].'.f20.mp4', $Config["qcloud"]["CDN_KEY"]),
     ];
 }else{
     $Errinfo = '未启用CDN KEY';
