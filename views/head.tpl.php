@@ -4,6 +4,9 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+if(!$title){
+    $title = ($Title_DB[$URI]!=null)?$Title_DB[$URI].' - ' : '';
+}
 ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -11,7 +14,7 @@ if(!defined('DEBUG')) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo ($title[$URI]!=null)?$title[$URI].' - ' : '';  ?><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
+    <title><?php echo $title ?><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
 
         <?php $view->load_css("layui.css"); ?>
         <?php $view->load_css("main.css"); ?>

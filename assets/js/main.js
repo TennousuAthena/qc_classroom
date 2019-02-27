@@ -33,3 +33,9 @@ if(window.localStorage && (window.localStorage.setItem('lstest', 'true') , windo
 }else{
     layer.msg("您的浏览器不支持LocalStorage 部分功能将受到影响")
 }
+//微信
+const ua = navigator.userAgent;
+const isWeixin = !!/MicroMessenger/i.test(ua);
+if(isWeixin){
+    alert('正在使用微信浏览器浏览，部分功能无法使用！');
+}

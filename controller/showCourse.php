@@ -10,44 +10,70 @@
  * Created by: QCTech
  * Created Time: 2019-02-26 - 14:59
  */
+
+$data = $conn->query('SELECT * FROM `qc_course` WHERE `scid` = \''. $Parameters['csid'] .'\' LIMIT 1')->fetch_assoc();
+if($data['name'] == ''){
+    $Errinfo = '课程不见了~';
+    require_once ("views/error.php");
+}
+if($Config["qcloud"]["CDN_KEY"]){
+    $video_url = $Config['domain']['video'].'/'.md5($Config["qcloud"]["CDN_KEY"].$data['file_url'].dechex(time())).'/'.dechex(time()).$data['file_url'];
+}else{
+    $video_url = $Config['domain']['video'].$data['file_url'];
+}
+if(!$Errinfo) {
+    ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
+    <div class="layui-container">
+        <h1><?php echo $data['name'] ?></h1>
+        <hr/>
+        <div id="player"></div>
+        <div class="layui-text">
+            <p><?php echo $data['describe'] ?></p>
+        </div>
+        <div style="height: 100px"></div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
+    <script>
+        const vid = '//<?php echo $video_url ?>';
+        const dp = new DPlayer({
+            container: document.getElementById('player'),
+            screenshot: true,
+            theme: '#5FB878',
+            mutex: true,
+            logo: '/assets/img/logo_.png',
+            video: {
+                defaultQuality: 1,
+                quality: [
+                    <?php if($Uid > 0) { ?>
+                    {
+                        name: '原画',
+                        url: vid,
+                        type: 'auto'
+                    },
+                        <?php }?>{
+                        name: '720p',
+                        url: vid + '.f30.mp4',
+                        type: 'auto'
+                    }, {
+                        name: '480p',
+                        url: vid + '.f20.mp4',
+                        type: 'auto'
+                    }],
+                pic: vid + '.0_0.p0.jpg',
+                thumbnails: vid + '.0_0.p0.jpg'
+            },
+            <?php if($data['subtitle_url']){ ?>
+            subtitle: {
+                color: '#cdcdcd',
+                fontSize: '3vw',
+                url: '//<?php echo $Config['domain']['video'] . $data['subtitle_url'] ?>'
+            },<?php } ?>
+        });
+        $('.dplayer-logo').addClass('player-logo');
+        $('.dplayer-logo').removeClass('dplayer-logo');
+    </script>
+
+    <?php
+}
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
-<div class="layui-container">
-    <div id="player"></div>
-</div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
-<script>
-    const vid = '//vid.edu.qmcmc.cn/test/test_video/%E9%BA%BB%E6%9E%9D%20%E5%87%86%C3%97%E3%82%84%E3%81%AA%E3%81%8E%E3%81%AA%E3%81%8E%20%E3%80%8C%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89%E3%80%8D.mp4';
-    const dp = new DPlayer({
-        container: document.getElementById('player'),
-        screenshot: true,
-        theme: '#5FB878',
-        mutex: true,
-        logo: '/assets/img/logo_.png',
-        video: {
-            defaultQuality: 1,
-            quality: [{
-                name: '原画',
-                url: vid,
-                type: 'auto'
-            }, {
-                name: '720p',
-                url: vid+'.f30.mp4',
-                type: 'auto'
-            }, {
-                name: '480p',
-                url: vid+'.f20.mp4',
-                type: 'auto'
-            }],
-            pic: vid+'.0_0.p0.jpg',
-            thumbnails: vid+'.0_0.p0.jpg'
-        },
-        subtitle: {
-            color: '#cdcdcd',
-            fontSize : '3vw',
-            url: '//vid.edu.qmcmc.cn/test/test_video/%E7%BB%88%E3%82%8F%E3%82%8A%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%8B%E3%82%89.vtt'
-        },
-    });
-    $('.dplayer-logo').addClass('player-logo');
-    $('.dplayer-logo').removeClass('dplayer-logo');
-</script>
