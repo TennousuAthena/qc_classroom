@@ -45,6 +45,9 @@ $usercenter = new usercenter();
                     </a>
                     <dl class="layui-nav-child">
                         <?php if($Is_login){ ?>
+                            <?php if($usercenter->get_user_group($conn, $Uid) == 1){ ?>
+                        <dd><a href="###" lay-filter="become_teacher">成为老师</a> </dd>
+                            <?php } ?>
                         <dd><a href="###">基本资料</a></dd>
                         <dd><a href="###">安全设置</a></dd>
                         <dd><a href="/user/logout">退出登录</a></dd>
