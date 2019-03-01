@@ -33,15 +33,20 @@ if(!$Errinfo) {
     <div class="layui-container">
         <h1><?php echo $data['name'] ?></h1>
         <hr/>
-        <div id="player"></div>
-        <div class="layui-text">
-            <hr />
-            <p><?php echo $data['describe'] ?></p>
+        <div class="layui-row">
+            <div id="player"></div>
         </div>
-        <div style="height: 100px"></div>
+        <div class="layui-row" style="margin: 0 0 100px">
+            <div class="layui-text">
+                <hr />
+                <p><?php echo $data['describe'] ?></p>
+            </div>
+        </div>
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
     <script>
+        //土办法改标题
+        document.title = '<?php echo $data['name']; ?>' + ' - ' + document.title;
         <?php if($data['type']==2 && $data['file_url']){   ?>
         const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
         const dp = new DPlayer({
