@@ -33,7 +33,12 @@ $usercenter = new usercenter();
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
                 <?php }?>
                 <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
-                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>"><a href="/teacher/"><em class="layui-icon layui-icon-username"> </em> 教师中心</a></li>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
+                    <a href="javascript:;"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
+                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dd><a href="">创建课程</a></dd>
+                        <dd><a href="">创建直播</a></dd>
+                    </dl>
                 <?php } ?>
                 <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="/user/myCourse"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
             </ul>

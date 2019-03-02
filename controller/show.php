@@ -15,47 +15,5 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
+require_once ('views/show/layout.phtml');
 ?>
-<!DOCTYPE HTML>
-<!--
-	under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-<head>
-    <title>青草课堂 - 网络在线教育智能直播课堂解决方案</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <?php $view->load_css("main_show.css"); ?>
-</head>
-<body class="is-preload">
-
-<!-- Header -->
-<header id="header">
-    <h1>青草课堂</h1>
-    <p>多种课程形式结合 & 个性化课程推送</p>
-    <p>智能网络在线教育&直播课堂解决方案</p>
-</header>
-
-<!-- Signup Form -->
-<form id="signup-form" method="post" action="#">
-    <input type="submit" value="立即体验" onclick="location.href='/'" />
-</form>
-
-<!-- Footer -->
-<footer id="footer">
-    <ul class="icons">
-        <li><a href="https://twitter.com/Qc_Minecraft" class="icon fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-        <li><a href="https://github.com/qcminecraft" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-        <li><a href="https://blog.qmcmc.cn/start-page.html" target="_blank" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-    </ul>
-    <ul class="copyright">
-        <li>&copy; 青草科技.</li><li>Credits: HTML5 ↑</li>
-    </ul>
-</footer>
-
-<!-- Scripts -->
-<?php $view->load_js("main_show.min.js"); ?>
-
-<?php $view->google_analytics(); ?>
-</body>
-</html>

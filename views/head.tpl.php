@@ -6,20 +6,35 @@ if(!defined('DEBUG')) {
 }
 if(!$title){
     $title = ($Title_DB[$URI]!=null)?$Title_DB[$URI].' - ' : '';
+    $og_title = $Title_DB[$URI];
+}else{
+    $og_title = $title;
+    $title = $title.' - ';
 }
 ?>
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#">
     <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $title ?><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="青草课堂是一个开源的智能网络在线教育解决方案，他可以快速为您搭建网络课堂平台。">
+        <meta name="keywords" content="青草课堂,青草网校,课堂解决方案,智能课堂,智慧课堂,青草MC,青草视频在线观看,物理课堂,青草慕课,课堂.online,在线课堂,在线教育解决方案,网课平台">
 
-        <?php $view->load_css("layui.css"); ?>
-        <?php $view->load_css("main.css"); ?>
+        <meta property="og:locale" content="zh_CN" />
+        <meta property="og:title" content="<?php echo $og_title ?>" />
 
-        <?php $view->load_js("jquery.min.js"); ?>
+        <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["video"] ?>">
+        <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["live_stream"] ?>">
+        <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["live_play"] ?>">
+
+        <title><?php echo $title ?><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
+
+            <?php $view->load_css("layui.css"); ?>
+            <?php $view->load_css("main.css"); ?>
+
+            <?php $view->load_js("jquery.min.js"); ?>
     </head>
     <body class="layui-layout-body">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
