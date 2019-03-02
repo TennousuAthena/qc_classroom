@@ -26,7 +26,6 @@ if(!$title){
         <meta property="og:title" content="<?php echo $og_title ?>" />
 
         <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["video"] ?>">
-        <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["live_stream"] ?>">
         <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["live_play"] ?>">
 
         <title><?php echo $title ?><?php echo $Config["website"]["title"]." - ".$Config["website"]["subtitle"]?></title>
