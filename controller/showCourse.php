@@ -45,8 +45,6 @@ if(!$Errinfo) {
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
     <script>
-        //土办法改标题
-        document.title = '<?php echo $data['name']; ?>' + ' - ' + document.title;
         <?php if($data['type']==2 && $data['file_url']){   ?>
         const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
         const dp = new DPlayer({

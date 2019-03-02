@@ -50,7 +50,7 @@ $Routes = array(
  */
 $Routes['GET']['/']                                                                        = 'home';
 $Routes['GET']['/sign_up']                                                                 = 'show';
-$Routes['GET']['/course(/(?<csid>[0-9]+))?']                                                = 'showCourse';
+$Routes['GET']['/course(/(?<csid>[0-9]+))?']                                               = 'showCourse';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 $Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';
