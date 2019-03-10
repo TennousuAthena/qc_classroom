@@ -32,7 +32,14 @@ if(!$title){
 
             <?php $view->load_css("layui.css"); ?>
             <?php $view->load_css("main.css"); ?>
-            <?php $view->load_css("dplayer.min.css"); ?>
+
+            <?php
+            if($Parameters['csid'] !== ''){
+            $view->load_css("dplayer.min.css");
+            //仅供演示用
+            echo "            <link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/gh/imsun/gitment/style/default.css\">";
+            }
+            ?>
 
             <?php $view->load_js("jquery.min.js"); ?>
     </head>
