@@ -90,6 +90,21 @@ if(!strstr($_SERVER['HTTP_USER_AGENT'], 'curl')) {
 
 $view = new View();
 $view->is_debug = DEBUG;
+//临时补丁
+if($Parameters['method'] == 'logout') {
+    if (!$Is_login) header("Location: /user/login");
+    if (parse_url($_SERVER['HTTP_REFERER'])['host'] != $Config["website"]["domain"]) {
+        http_response_code(403);
+        $Errinfo = '来源不正确';
+        require_once("views/error.php");
+    } else {
+        $usercenter->write_log($conn, 'logout', $Uid, $Uid, '1');
+        $usercenter->set_cookie('uid', 0, -100, $Config["website"]["https"]);
+        $usercenter->set_cookie('ukey', '0', -100, $Config["website"]["https"]);
+        $usercenter->set_cookie('expire_time', time(), -100, $Config["website"]["https"]);
+
+    }
+}
 //部分controller不需要view
 if($UrlPath == 'show' || $UrlPath == 'callback' || $UrlPath == 'api' || $_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once("controller/" . $UrlPath . ".php");
