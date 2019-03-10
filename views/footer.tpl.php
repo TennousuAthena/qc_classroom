@@ -28,3 +28,10 @@ if(!defined('DEBUG')) {
         </p>
     </div>
 </footer>
+<?php if(!DEBUG){ ?>
+<script>
+    $(document).on('pjax:success', function() {
+        _ga(window, document, navigator, location);
+    });
+</script>
+<?php } ?>

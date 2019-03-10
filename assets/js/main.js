@@ -24,6 +24,16 @@ $(document).on('pjax:start', function() {
         $.getScript(Static + "js/dplayer.min.js");
     }
 });
+//统计
+function _ga(e, n, o) {
+    const t = e.screen,
+        a = encodeURIComponent,
+        r = ["dt=" + a(n.title), "dr=" + a(n.referrer), "ul=" + (o.language || o.browserLanguage), "sd=" + t.colorDepth +
+        "-bit", "sr=" + t.width + "x" + t.height, "vp=" + e.innerWidth + "x" + e.innerHeight, "z=" + +new Date],
+        i = "?" + r.join("&");
+    e.__beacon_img = new Image, e.__beacon_img.src = "/api/analytics" + i
+};
+_ga(window, document, navigator, location);
 
 //localstorage验证
 if(window.localStorage && (window.localStorage.setItem('lstest', 'true') , window.localStorage.getItem('lstest') == "true")){
