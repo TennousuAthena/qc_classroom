@@ -24,6 +24,11 @@ $(document).on('pjax:start', function() {
         $.getScript(Static + "js/dplayer.min.js");
     }
 });
+//进度条
+NProgress.start();
+$(document).ready(function(){ NProgress.done(); });
+$(document).on('pjax:start', function() { NProgress.start(); });
+$(document).on('pjax:end',   function() { NProgress.done();  });
 //统计
 function _ga(e, n, o) {
     const t = e.screen,
