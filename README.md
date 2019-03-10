@@ -22,6 +22,8 @@
 - 前端框架： [jquery](https://github.com/jquery/jquery)
 - 服务器支持： [腾讯云](https://cloud.tencent.com/)
 - 验证码提供： [Geetest](https://www.geetest.com/)
+- Google analytics 服务器请求 [analytics](https://stneng.com/google-analytics-%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%B7%E6%B1%82%EF%BC%89/)
+- [pjax](https://github.com/qcminecraft/jquery-pjax)
 
 ## 许可
 由于项目时间紧张，存在诸多漏洞，故本项目使用 WTFPL 协议进行许可，简而言之，你™想干什么就干什么。
