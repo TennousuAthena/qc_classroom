@@ -44,7 +44,7 @@ $usercenter = new usercenter();
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>###<?php } ?>">
+                        <a href="<?php if(!$Is_login){ echo "/user/login\" data-pjax='false'"; }else{?>###<?php } ?>">
                             <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
                             <?php echo $Uinfo['username']; ?>
                         </a>

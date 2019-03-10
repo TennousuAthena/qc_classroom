@@ -18,6 +18,12 @@ layui.use(['layer', 'form', 'element', 'laydate', 'carousel'], function(){
 });
 //pjax
 $(document).pjax('a[target!=_blank][data-pjax!=false]', '#pjax-content', {fragment:'#pjax-content', timeout:7000});
+//需要加载dplayer
+$(document).on('pjax:start', function() {
+    if (typeof DPlayer == "undefined") {
+        $.getScript(Static + "js/dplayer.min.js");
+    }
+});
 
 //localstorage验证
 if(window.localStorage && (window.localStorage.setItem('lstest', 'true') , window.localStorage.getItem('lstest') == "true")){

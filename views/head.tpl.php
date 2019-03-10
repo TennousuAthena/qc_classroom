@@ -54,4 +54,9 @@ if(!$title){
 
     <?php $view->load_js("../layui.js"); ?>
     <?php $view->load_js("main.js"); ?>
+
+    <script type="text/javascript">
+        const Static = '<?php echo $Config["website"]["static"] ?>';
+        const Debug = '<?php echo DEBUG ?>';
+    </script>
     <div class="wrap">
