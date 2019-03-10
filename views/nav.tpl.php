@@ -34,7 +34,7 @@ $usercenter = new usercenter();
                     <?php }?>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
-                        <a href="javascript:;"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
+                        <a href="###"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
                         <dl class="layui-nav-child"> <!-- 二级菜单 -->
                             <dd><a href="">创建课程</a></dd>
                             <dd><a href="">创建直播</a></dd>
@@ -44,7 +44,7 @@ $usercenter = new usercenter();
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>javascript:;<?php } ?>">
+                        <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>###<?php } ?>">
                             <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
                             <?php echo $Uinfo['username']; ?>
                         </a>
@@ -55,10 +55,10 @@ $usercenter = new usercenter();
                                 <?php } ?>
                             <dd><a href="###">基本资料</a></dd>
                             <dd><a href="###">安全设置</a></dd>
-                            <dd><a href="/user/logout">退出登录</a></dd>
+                            <dd><a href="/user/logout" data-pjax="false">退出登录</a></dd>
                             <?php }else{ ?>
-                            <dd><a href="/user/login">登录</a></dd>
-                            <dd><a href="/user/register">注册</a></dd>
+                            <dd><a href="/user/login" data-pjax="false">登录</a></dd>
+                            <dd><a href="/user/register" data-pjax="false">注册</a></dd>
                             <?php } ?></dl>
                     </li>
                 </ul>

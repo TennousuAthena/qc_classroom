@@ -17,6 +17,7 @@ if(!$title){
     <head>
         <meta charset="utf-8">
         <meta name="renderer" content="webkit">
+        <meta http-equiv="x-pjax-version" content="v1.2">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="青草课堂是一个开源的智能网络在线教育解决方案，他可以快速为您搭建网络课堂平台。">
@@ -42,6 +43,7 @@ if(!$title){
             ?>
 
             <?php $view->load_js("jquery.min.js"); ?>
+            <?php $view->load_js("pjax.jquery.min.js"); ?>
     </head>
     <body class="layui-layout-body">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
