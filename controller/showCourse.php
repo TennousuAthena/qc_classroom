@@ -29,8 +29,7 @@ if($Config["qcloud"]["CDN_KEY"]){
 }
 if(!$Errinfo) {
     ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
-    <div class="layui-container">
+        <div class="layui-container">
         <h1><?php echo $data['name'] ?></h1>
         <hr/>
         <div class="layui-row">

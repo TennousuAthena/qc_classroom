@@ -32,6 +32,7 @@ if(!$title){
 
             <?php $view->load_css("layui.css"); ?>
             <?php $view->load_css("main.css"); ?>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
 
             <?php $view->load_js("jquery.min.js"); ?>
     </head>
