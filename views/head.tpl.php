@@ -46,6 +46,7 @@ if(!$title){
             <?php $view->load_js("jquery.min.js"); ?>
             <?php $view->load_js("pjax.jquery.min.js"); ?>
             <?php $view->load_js("nprogress.js"); ?>
+        <?php if($UrlPath === 'showCourse'){ $view->load_js("dplayer.min.js"); } ?>
     </head>
     <body class="layui-layout-body">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->

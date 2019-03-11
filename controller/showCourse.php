@@ -42,7 +42,6 @@ if(!$Errinfo) {
             </div>
         </div>
     </div>
-    <?php $view->load_js('dplayer.min.js'); ?>
     <script>
         <?php if($data['type']==2 && $data['file_url']){   ?>
         const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
