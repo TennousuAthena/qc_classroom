@@ -1,0 +1,47 @@
+<?php
+/**
+ *  ___   ____ _
+ * / _ \ / ___| | __ _ ___ ___ _ __ ___   ___  _ __ ___
+ *| | | | |   | |/ _` / __/ __| '__/ _ \ / _ \| '_ ` _ \
+ *| |_| | |___| | (_| \__ \__ \ | | (_) | (_) | | | | | |
+ * \__\_\\____|_|\__,_|___/___/_|  \___/ \___/|_| |_| |_|
+ * 青草课堂 - index.phtml
+ * Copyright (c) 2015 - 2019.,QCTech ,All rights reserved.
+ * Created by: QCTech
+ * Created Time: 2019-02-24 - 17:20
+ */
+if(DEMO){
+?>
+
+    <div class="layui-container">
+        <div class="layui-carousel" id="carousel-home">
+            <div carousel-item>
+                <div id="carousel-1">
+                    <a href="/course/2">
+                    <img alt="海老师物理课堂" title="海老师物理课堂" src="https://i.loli.net/2019/02/26/5c75319f23a70.png" style="clear: both; display: block;margin:auto;" class="layui-hide-lg" />
+                    <img alt="海老师物理课堂" title="海老师物理课堂" src="https://i.loli.net/2019/02/26/5c7531b6c8b7a.png" style="clear: both; display: block;margin:auto;" /></a>
+                </div>
+                <div id="carousel-2">
+                    <a href="/course/3">
+                        <img alt="怎样对对联" title="怎样对对联 @ 混乱博物馆" src="https://i.loli.net/2019/02/27/5c76aa878b986.png" style="clear: both; display: block;margin:auto;" class="layui-hide-lg" />
+                        <img alt="怎样对对联" title="怎样对对联 @ 混乱博物馆" src="https://i.loli.net/2019/02/27/5c76aacdc428b.png" style="clear: both; display: block;margin:auto;" /></a>
+                </div>
+                <div id="carousel-3s">
+                    <a href="/course/4">
+                        <img alt="五点共圆怎么证？" title="五点共圆怎么证？ @ 李永乐老师" src="https://i.loli.net/2019/02/27/5c76aea2e703b.png" style="clear: both; display: block;margin:auto;" class="layui-hide-lg" />
+                        <img alt="五点共圆怎么证？" title="五点共圆怎么证？ @ 李永乐老师" src="https://i.loli.net/2019/02/27/5c76aeebc8fc0.png" style="clear: both; display: block;margin:auto;" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    layui.use('carousel', function(){
+        const carousel = layui.carousel;
+        carousel.render({
+            elem: '#carousel-home'
+            ,width: '100%'
+        });
+    });
+
+</script>
+<?php } ?>

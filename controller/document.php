@@ -22,14 +22,13 @@ if(!file_exists($targetFile)){
     require_once ("views/error.php");
 }else{
     require_once ($targetFile);
-}
-echo '<div class="layui-container">
+    echo '<div class="layui-container">
     <div id="container"></div>
 </div><br /><br /><br /><br /><br />
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/qcminecraft/qc_classrom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
+<!--仅供演示用，将在正式版本删除-->
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/qcminecraft/qc_classrom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
 <script>
-    let gitment = new Gitment({
+    const gitment = new Gitment({
         id: window.location.pathname,
         owner: \'qcminecraft\',
         repo: \'qc_classroom-comment\',
@@ -40,3 +39,4 @@ echo '<div class="layui-container">
     })
     gitment.render(\'container\')
 </script>';
+}

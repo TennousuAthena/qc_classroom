@@ -271,7 +271,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
             }else{
                 $usercenter->write_log($conn, 'logout', $Uid, $Uid, '1');
                 $usercenter->set_cookie('uid', 0, -100 , $Config["website"]["https"]);
-                $usercenter->set_cookie('ukey', password_hash(time() , PASSWORD_DEFAULT), -100 , $Config["website"]["https"]);
+                $usercenter->set_cookie('ukey', '0', -100 , $Config["website"]["https"]);
                 $usercenter->set_cookie('expire_time', time(), -100 , $Config["website"]["https"]);
                 ?>
                 <div class="layui-card layui-container">
@@ -279,7 +279,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     <div class="layui-card-body">
                         <p>您的账户已安全退出</p>
                         <br />
-                        <p>将在3秒后回到首页...</p>
+                        <p>将在3秒后回到<a href="/" data-pjax="false">首页</a>...</p>
                         <p class="layui-word-aux">不要吐槽青草前端写得丑，我尽力了好吗QAQ...</p>
                     </div>
                 </div>

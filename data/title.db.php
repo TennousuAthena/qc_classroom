@@ -11,7 +11,7 @@
  * Created Time: 2019-02-22 - 16:33
  * 硬核存放标题~
  */
-$title = [
+$Title_DB = [
     '/'                    =>  '首页',
     '/user/'               =>  '用户中心',
     '/user/login'          =>  '登录',
@@ -21,5 +21,6 @@ $title = [
     '/teacher/createCourse'=>  '创建课程',
     '/doc/'                =>  '文档中心',
     '/doc/before-you-use'  =>  '使用必读',
-    '/doc/privacy-policy'  =>  '隐私政策'
+    '/doc/privacy-policy'  =>  '隐私政策',
+    '/doc/timeline'        =>  '时间线'
 ];

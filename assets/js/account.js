@@ -71,7 +71,7 @@ switch (window.location.pathname) {
         };
         //请求验证码
         $.ajax({
-            url: "/api/captcha",
+            url: "/api/captcha?r=" + Math.random(),
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -95,7 +95,7 @@ switch (window.location.pathname) {
                 let result = captchaObj.getValidate();
                 let phoneNumber = $("#phone").val();
                 $.ajax({
-                    url: '/api/sendSms',
+                    url: '/api/sendSms?r=' + Math.random(),
                     type: 'post',
                     dataType: 'json',
                     data: {
@@ -220,7 +220,7 @@ switch (window.location.pathname) {
         });
         //请求验证码
         $.ajax({
-            url: "/api/captcha",
+            url: "/api/captcha?r=" + Math.random(),
             type: "get",
             dataType: "json",
             success: function (data) {

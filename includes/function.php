@@ -68,3 +68,12 @@ function GetCurUrl(){
     }
     return $url;
 }
+
+/**
+ * CDN签名 Type-C
+ * @param string $fileDir
+ * @return string
+ */
+function CDNSign($fileDir, $key){
+    return '/'.md5($key.$fileDir.dechex(time())).'/'.dechex(time()).$fileDir;
+}

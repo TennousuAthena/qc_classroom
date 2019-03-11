@@ -10,6 +10,9 @@
  * Created by: QCTech
  * Created Time: 2019-01-23 - 12:13
  */
+//打开缓冲区
+ob_start();
+header('Content-Type:text/html; charset=UTF-8');
 //关掉Notice
 error_reporting(E_ERROR);
 // 引入配置文件
@@ -48,7 +51,7 @@ $Routes = array(
  */
 $Routes['GET']['/']                                                                        = 'home';
 $Routes['GET']['/sign_up']                                                                 = 'show';
-$Routes['GET']['/list(/page/(?<page>[0-9]+))?']                                            = 'list';
+$Routes['GET']['/course(/(?<csid>[0-9]+))?']                                               = 'showCourse';
 $Routes['GET']['/user/(?<method>.*)']                                                      = 'user';
 $Routes['POST']['/user/(?<method>.*)']                                                     = 'user';
 $Routes['GET']['/api/(?<mod>.*)']                                                          = 'api';

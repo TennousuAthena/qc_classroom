@@ -15,4 +15,4 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-//var_dump($Parameters);
+require_once ('views/home/index.phtml');

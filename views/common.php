@@ -31,6 +31,10 @@ if($Uid > 0){
     $Uinfo['username'] = '未登录用户';
 }
 require_once ('data/title.db.php');
+if($UrlPath === 'showCourse'){
+    $data = $conn->query('SELECT * FROM `qc_course` WHERE `scid` = \''. $Parameters['csid'] .'\' LIMIT 1')->fetch_assoc();
+    $title = $data['name'];
+}
 class View {
     /**
      * @var bool 是否开启随机数防缓存，方便开发
