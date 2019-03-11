@@ -158,7 +158,7 @@
     };
     //请求验证码
     $.ajax({
-        url: "/api/captcha",
+        url: "/api/captcha?r=" + Math.random(),
         type: "post",
         dataType: "json",
         success: function (data) {
