@@ -4,7 +4,8 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-if(!$title){
+$title;
+if(!@$title){
     $title = ($Title_DB[$URI]!=null)?$Title_DB[$URI].' - ' : '';
     $og_title = $Title_DB[$URI];
 }else{
@@ -36,7 +37,7 @@ if(!$title){
             <?php $view->load_css("nprogress.css"); ?>
 
             <?php
-            if($Parameters['csid'] !== ''){
+            if(@$Parameters['csid'] !== ''){
             $view->load_css("dplayer.min.css");
             //仅供演示用
             echo "            <link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/gh/imsun/gitment/style/default.css\">";

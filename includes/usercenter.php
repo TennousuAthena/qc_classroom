@@ -145,7 +145,7 @@ class usercenter
             $server = [
                 'HTTP_HOST' => $_SERVER['HTTP_HOST'],
                 'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
-                'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
+                'HTTP_REFERER' => @$_SERVER['HTTP_REFERER'],
                 'REMOTE_PORT' => $_SERVER['REMOTE_PORT'],
                 'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR']
             ];
