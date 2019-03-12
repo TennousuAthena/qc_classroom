@@ -26,6 +26,19 @@ NProgress.start();
 $(document).ready(function(){ NProgress.done(); });
 $(document).on('pjax:start', function() { NProgress.start(); });
 $(document).on('pjax:end',   function() { NProgress.done();  });
+//dplayer
+if (typeof(dp) !== "undefined")
+{
+    dp.on('loadstart', function () {
+        console.log('加载开始');
+        NProgress.start();
+    });
+    dp.on('play', function () {
+        console.log('开始播放');
+        NProgress.done();
+    });
+}
+
 //统计
 function _ga(e, n, o) {
     const t = e.screen,
