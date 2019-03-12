@@ -45,8 +45,8 @@ if(!@$title){
             ?>
 
             <?php $view->load_js("jquery.min.js"); ?>
-            <?php $view->load_js("pjax.jquery.min.js"); ?>
-            <?php $view->load_js("nprogress.js"); ?>
+            <?php $view->load_js("pjax.jquery.min.js", true); ?>
+            <?php $view->load_js("nprogress.js", true); ?>
         <?php if($UrlPath === 'showCourse'){ $view->load_js("dplayer.min.js"); } ?>
     </head>
     <body class="layui-layout-body">
@@ -57,8 +57,8 @@ if(!@$title){
     <![endif]-->
 
     <?php $view->load_js("../layui.js"); ?>
-    <?php $view->load_js("main.js"); ?>
-    <?php $view->load_js("dplayer.min.js"); ?>
+    <?php $view->load_js("main.js", true); ?>
+    <?php $view->load_js("dplayer.min.js", true); ?>
 
     <script type="text/javascript">
         const Static = '<?php echo $Config["website"]["static"] ?>';

@@ -44,16 +44,20 @@ class View {
     /**
      * 加载js
      * @param string $filename 文件在/assets/js下的名称，包含.js
-     * @return int
+     * @param bool $async 是否异步加载脚本
+     * @return null
      */
-    function load_js($filename){
+    function load_js($filename, $async = false){
         global $Config;
-        if(!$this->is_debug) {
-            echo "<script src=\"" . $Config["website"]["static"] . "js/" . $filename . "\"></script>" . PHP_EOL;
-        }else{
-            echo "<script src=\"" . $Config["website"]["static"] . "js/" . $filename . "?" . rand(1000000,9999999) . "\"></script>" . PHP_EOL;
-        }
-        return 0;
+        $return = '<script src="'.$Config["website"]["static"].'js/'.$filename;
+        if($this->is_debug) $return.='?' . rand(1000000, 9999999);
+
+        $return.='"';
+
+        if($async) $return.=' async';
+        $return.='></script>' . PHP_EOL;
+        echo $return;
+        return null;
     }
 
     /**
