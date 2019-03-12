@@ -17,7 +17,7 @@
 [青草文件](https://file.qcminecraft.com/index.php?share/file&user=1&sid=TYmnaZNw)
 
 ## 如何食用？
-见[https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/shi-yong-wen-dang/untitled](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/shi-yong-wen-dang/untitled)
+见 [青草课堂文档](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/shi-yong-wen-dang/untitled)
 
 ## 特别感谢
 - 前端UI框架： [layui](https://github.com/sentsin/layui)
@@ -26,9 +26,14 @@
 - 验证码提供： [Geetest](https://www.geetest.com/)
 - Google analytics 服务器请求 [analytics](https://stneng.com/google-analytics-%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%B7%E6%B1%82%EF%BC%89/)
 - 加载技术 [pjax](https://github.com/qcminecraft/jquery-pjax)
-- 进度条 [nprogress](https://github.com/rstacruz/nprogress)
+- 进度条 [Nprogress](https://github.com/rstacruz/nprogress)
 
 ## 许可
-由于项目时间紧张，存在诸多漏洞，故本项目使用 WTFPL 协议进行许可，简而言之，你™想干什么就干什么。
+本项目使用 WTFPL 协议进行许可，您可以做任何您想做的事，包括但不限于：
+ * 私自使用
+ * 商业使用
+ * 修改源程序
+
+*本项目是完全开源的，请勿从任何渠道购买下载不安全的程序！*
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom?ref=badge_large)
