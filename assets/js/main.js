@@ -17,12 +17,9 @@ layui.use(['layer', 'form', 'element', 'laydate', 'carousel'], function(){
     });
 });
 //pjax
-$(document).pjax('a[target!=_blank][data-pjax!=false]', '#pjax-content', {fragment:'#pjax-content', timeout:7000});
-//需要加载dplayer
-$(document).on('pjax:start', function() {
-    if (typeof DPlayer == "undefined") {
-        $.getScript(Static + "js/dplayer.min.js");
-    }
+$(document).pjax('a[target!=_blank][data-pjax!=false]', '#pjax-content', {
+    fragment: '#pjax-content',
+    timeout: 5000
 });
 //进度条
 NProgress.start();
