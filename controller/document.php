@@ -26,7 +26,7 @@ if(!file_exists($targetFile)){
     <div id="container"></div>
 </div><br /><br /><br /><br /><br />
 <!--仅供演示用，将在正式版本删除-->
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/qcminecraft/qc_classrom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/qcminecraft/qc_classroom@5a8e655cd8bdc6bac80a0ace2da984afd7f99efd/assets/js/gitment.min.js"></script>
 <script>
     const gitment = new Gitment({
         id: window.location.pathname,

@@ -1,5 +1,5 @@
 # 青草课堂
-[![CircleCI](https://circleci.com/gh/qcminecraft/qc_classrom.svg?style=svg&circle-token=e33f17a2b23f23e80f9d31d6e34b0ff898fd3ff4)](https://circleci.com/gh/qcminecraft/qc_classrom)
+[![CircleCI](https://circleci.com/gh/qcminecraft/qc_classroom.svg?style=svg&circle-token=e33f17a2b23f23e80f9d31d6e34b0ff898fd3ff4)](https://circleci.com/gh/qcminecraft/qc_classroom)
 青草课堂——网络在线教育智能直播课堂解决方案
 
 [![Telegram](https://img.shields.io/badge/Telegram-Join--the--chat-green.svg?logo=telegram&style=for-the-badge)](https://t.me/joinchat/IoZlgxelV02lQRfJSxDCtA)
@@ -36,4 +36,4 @@
 
 *本项目是完全开源的，请勿从任何渠道购买下载不安全的程序！*
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classrom?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classroom.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classroom?ref=badge_large)
