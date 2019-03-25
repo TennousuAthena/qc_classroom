@@ -40,7 +40,7 @@ $usercenter = new usercenter();
                             <dd><a href="">创建直播</a></dd>
                         </dl>
                     <?php } ?>
-                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="/user/myCourse"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\" target='_blank'";?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">

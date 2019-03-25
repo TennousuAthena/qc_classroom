@@ -292,6 +292,11 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
             }
             break;
         }
+    case 'myCourse':{
+        if(!$Is_login) header("Location: /user/login");
+
+        break;
+    }
     default:
         {
             $Errinfo = '页面不存在';
