@@ -222,6 +222,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                         'code'   => -101,
                         'msg'    => '用户不存在'
                     ];
+                    $usercenter->write_log($conn, 'user_does_not_exist', 'Username: '.@$_POST['username'], '0', '-101');
                     die(json_encode($return));
                 }
                 //验证密码是否正确
