@@ -56,8 +56,8 @@ if(!@$title){
     <![endif]-->
 
     <?php $view->load_js("../layui.js"); ?>
-    <?php $view->load_js("main.js", true); ?>
     <?php $view->load_js("dplayer.min.js"); ?>
+    <?php $view->load_js("main.js", true); ?>
 
     <script type="text/javascript">
         const Static = '<?php echo $Config["website"]["static"] ?>';

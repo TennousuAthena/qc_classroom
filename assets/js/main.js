@@ -59,3 +59,13 @@ const isWeixin = !!/MicroMessenger/i.test(ua);
 if(isWeixin){
     alert('正在使用微信浏览器浏览，部分功能无法使用！');
 }
+
+//dplayer
+if(!typeof dp == "undefined") {
+    dp.on('error', function () {
+        layer.msg("视频发生错误！", {
+            anim: 6,
+            icon: 2
+        });
+    });
+}
