@@ -242,7 +242,7 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     $usercenter->set_cookie('expire_time', time()+3600*24*30, $Expire , $Config["website"]["https"]);
                     die(json_encode($return));
                 }else{
-                    $usercenter->write_log($conn, 'wrong_psw', json_encode($_POST), '0', '-1');
+                    $usercenter->write_log($conn, 'wrong_psw', 'Username: '.@$_POST['username'], '0', '-1');
                     $return = [
                         'status' => 'failed',
                         'code'   => -102,
@@ -292,6 +292,11 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
             }
             break;
         }
+    case 'myCourse':{
+        if(!$Is_login) header("Location: /user/login");
+
+        break;
+    }
     default:
         {
             $Errinfo = '页面不存在';
