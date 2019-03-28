@@ -35,5 +35,3 @@
  * 修改源程序
 
 *本项目是完全开源的，请勿从任何渠道购买下载不安全的程序！*
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classroom.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fqcminecraft%2Fqc_classroom?ref=badge_large)
