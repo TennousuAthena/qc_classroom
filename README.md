@@ -24,7 +24,6 @@
 - 前端框架： [jquery](https://github.com/jquery/jquery)
 - 服务器支持： [腾讯云](https://cloud.tencent.com/)
 - 验证码提供： [Geetest](https://www.geetest.com/)
-- Google analytics 服务器请求 [analytics](https://stneng.com/google-analytics-%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%B7%E6%B1%82%EF%BC%89/)
 - 加载技术 [pjax](https://github.com/qcminecraft/jquery-pjax)
 - 进度条 [Nprogress](https://github.com/rstacruz/nprogress)
 
