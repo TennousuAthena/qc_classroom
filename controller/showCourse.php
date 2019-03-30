@@ -92,6 +92,7 @@ if(!$Errinfo) {
                 url: '//<?php echo $Config["domain"]["live_play"] ?>/live/<?php echo $data['stream_id']?>.m3u8'
             }
         });
+        $('.dplayer-bar-wrap').remove();
         <?php } ?>
 
         <?php if(!$Is_login) echo "dp.notice('登录后解锁原画画质哦~', 5000);";?>
