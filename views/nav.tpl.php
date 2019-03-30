@@ -30,14 +30,13 @@ $usercenter = new usercenter();
                 <ul class="layui-nav layui-layout-left layui-hide-xs">
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/') echo "layui-this" ?>"><a href="/"><em class="layui-icon layui-icon-home"> </em>首页</a></li>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
-                        <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
+                        <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse" target="_blank"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
                     <?php }?>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
                         <a href="###"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
-                        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dl class="layui-nav-child">
                             <dd><a href="">创建课程</a></dd>
-                            <dd><a href="">创建直播</a></dd>
                         </dl>
                     <?php } ?>
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\" target='_blank'";?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
