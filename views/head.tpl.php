@@ -56,6 +56,7 @@ if(!@$title){
     <![endif]-->
 
     <?php $view->load_js("../layui.js"); ?>
+    <?php $view->load_js("hls.min.js"); ?>
     <?php $view->load_js("dplayer.min.js"); ?>
     <?php $view->load_js("main.js", true); ?>
 

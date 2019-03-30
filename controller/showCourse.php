@@ -89,7 +89,7 @@ if(!$Errinfo) {
             preload: 'auto',
             logo: '/assets/img/logo_.png',
             video: {
-                url: 'rmtp://<?php echo $Config["domain"]["live_play"] ?>/live/<?php echo $data['stream_id']?>'
+                url: '//<?php echo $Config["domain"]["live_play"] ?>/live/<?php echo $data['stream_id']?>.m3u8'
             }
         });
         <?php } ?>
