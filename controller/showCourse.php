@@ -93,6 +93,8 @@ if(!$Errinfo) {
             }
         });
         $('.dplayer-bar-wrap').remove();
+        $('.dplayer-time').addClass('layui-anim layui-anim-scaleSpring layui-anim-loop');
+        $('.dplayer-time').html('<span class="dplayer-dtime">📺直播中...</span>');
         <?php } ?>
 
         <?php if(!$Is_login) echo "dp.notice('登录后解锁原画画质哦~', 5000);";?>
