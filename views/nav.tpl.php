@@ -52,12 +52,12 @@ $usercenter = new usercenter();
                                 <?php if($usercenter->get_user_group($conn, $Uid) == 1){ ?>
                             <dd><a href="###" lay-filter="become_teacher">成为老师</a> </dd>
                                 <?php } ?>
-                            <dd><a href="###">基本资料</a></dd>
-                            <dd><a href="###">安全设置</a></dd>
-                            <dd><a href="/user/logout" data-pjax="false">退出登录</a></dd>
+                            <dd><a href="###"><i class="layui-icon layui-icon-user"></i> 基本资料</a></dd>
+                            <dd><a href="###"><i class="layui-icon layui-icon-auz"></i> 安全设置</a></dd>
+                            <dd><a href="/user/logout" data-pjax="false"><i class="layui-icon layui-icon-close-fill"></i> 退出登录</a></dd>
                             <?php }else{ ?>
-                            <dd><a href="/user/login" data-pjax="false">登录</a></dd>
-                            <dd><a href="/user/register" data-pjax="false">注册</a></dd>
+                            <dd><a href="/user/login" data-pjax="false"><i class="layui-icon layui-icon-username"></i> 登录</a></dd>
+                            <dd><a href="/user/register" data-pjax="false"><i class="layui-icon layui-icon-release"></i> 注册</a></dd>
                             <?php } ?></dl>
                     </li>
                 </ul>

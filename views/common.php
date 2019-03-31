@@ -34,6 +34,7 @@ require_once ('data/title.db.php');
 if($UrlPath === 'showCourse'){
     $data = $conn->query('SELECT * FROM `qc_course` WHERE `scid` = \''. $Parameters['csid'] .'\' LIMIT 1')->fetch_assoc();
     $title = $data['name'];
+    $poster = $Config['domain']['video'].$data['file_url'].".0_0.p0.jpg";
 }
 class View {
     /**

@@ -4,7 +4,6 @@ if(!defined('DEBUG')) {
     http_response_code(403);
     exit('Access Denied');
 }
-$title;
 if(!@$title){
     $title = ($Title_DB[$URI]!=null)?$Title_DB[$URI].' - ' : '';
     $og_title = $Title_DB[$URI];
@@ -26,6 +25,17 @@ if(!@$title){
 
         <meta property="og:locale" content="zh_CN" />
         <meta property="og:title" content="<?php echo $og_title ?>" />
+        <?php
+        if($UrlPath === 'showCourse' && isset($data['file_url']) && $data['type'] == 2){
+        ?>
+        <meta property="og:video:type" content="video/mp4" />
+        <meta property="og:video:width" content="1920" />
+        <meta property="og:video:height" content="1080" />
+        <meta property="og:video" content="http://<?php echo $Config["website"]["domain"]."/course/".$Parameters['csid'] ?>" />
+        <meta property="og:image" content="http://<?php echo $poster; ?>" />
+        <meta property="og:image:secure_url" content="https://<?php echo $poster; ?>" />
+
+        <?php } ?>
 
         <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["video"] ?>">
         <link rel="dns-prefetch" href="//<?php echo $Config["domain"]["live_play"] ?>">
