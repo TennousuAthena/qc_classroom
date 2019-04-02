@@ -53,12 +53,12 @@ if(!@$title){
             echo "            <link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/gh/imsun/gitment/style/default.css\">";
             }
             ?>
-
-            <?php $view->load_js("jquery.min.js"); ?>
-            <?php $view->load_js("pjax.jquery.min.js", true); ?>
-            <?php $view->load_js("nprogress.js", true); ?>
     </head>
     <body class="layui-layout-body">
+    <?php $view->load_js("jquery.min.js"); ?>
+    <?php $view->load_js("pjax.jquery.min.js", true); ?>
+    <?php $view->load_js("nprogress.js", true); ?>
+
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <?php $view->load_js("html5.min.js"); ?>
