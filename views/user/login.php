@@ -64,7 +64,7 @@ if(isset($Is_login)){
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <a class="layui-form" href="/user/register">没有账户？注册一个</a>
+                    <a class="layui-form" href="/user/register" data-pjax="false">没有账户？注册一个</a>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
