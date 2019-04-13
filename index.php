@@ -61,6 +61,7 @@ $Routes['GET']['/callback/(?<mod>.*)']                                          
 $Routes['GET']['/teacher/(?<mod>.*)']                                                      = 'teacher';
 $Routes['POST']['/teacher/(?<mod>.*)']                                                     = 'teacher';
 $Routes['GET']['/doc/(?<name>.*)']                                                         = 'document';
+$Routes['GET']['/note/(?<ntid>.*)']                                                        = 'note';
 
 
 //这里是Routes End

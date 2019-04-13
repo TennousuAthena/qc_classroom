@@ -30,7 +30,7 @@ $usercenter = new usercenter();
                 <ul class="layui-nav layui-layout-left layui-hide-xs">
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/') echo "layui-this" ?>"><a href="/"><em class="layui-icon layui-icon-home"> </em>首页</a></li>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
-                        <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse" target="_blank"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
+                        <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
                     <?php }?>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
@@ -39,11 +39,11 @@ $usercenter = new usercenter();
                             <dd><a href="">创建课程</a></dd>
                         </dl>
                     <?php } ?>
-                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\" target='_blank'";?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\"" ;?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="<?php if(!$Is_login){ echo "/user/login\" data-pjax=\"false\""; }else{?>###<?php } ?>">
+                        <a href="<?php if(!$Is_login){ echo "/user/login\" "; }else{?>###<?php } ?>">
                             <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
                             <?php echo $Uinfo['username']; ?>
                         </a>
@@ -56,8 +56,8 @@ $usercenter = new usercenter();
                             <dd><a href="###"><i class="layui-icon layui-icon-auz"></i> 安全设置</a></dd>
                             <dd><a href="/user/logout" data-pjax="false"><i class="layui-icon layui-icon-close-fill"></i> 退出登录</a></dd>
                             <?php }else{ ?>
-                            <dd><a href="/user/login" data-pjax="false"><i class="layui-icon layui-icon-username"></i> 登录</a></dd>
-                            <dd><a href="/user/register" data-pjax="false"><i class="layui-icon layui-icon-release"></i> 注册</a></dd>
+                            <dd><a href="/user/login"><i class="layui-icon layui-icon-username"></i> 登录</a></dd>
+                            <dd><a href="/user/register"><i class="layui-icon layui-icon-release"></i> 注册</a></dd>
                             <?php } ?></dl>
                     </li>
                 </ul>

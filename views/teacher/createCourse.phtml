@@ -83,16 +83,6 @@
     </div>
 <?php $view->load_js("gt.min.js"); ?>
 <script type="text/javascript">
-    layui.use('laydate', function(){
-        var laydate = layui.laydate;
-
-        laydate.render({
-            elem: '#date',
-            min: 1,
-            max: 180,
-        });
-    });
-
     let createCourse = function (captchaObj) {
         layer.load(2);
         captchaObj.appendTo('#captcha');

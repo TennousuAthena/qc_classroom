@@ -64,7 +64,7 @@ if($Is_login){
                 </div>
             </div>
             <input type="text" style="display: none;" name="lid" id="lid" value="">
-            <a class="layui-form" href="/user/login" data-pjax="false">已有账户？点击登录</a>
+            <a class="layui-form" href="/user/login">已有账户？点击登录</a>
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button type="button" class="layui-btn layui-btn-disabled" id="btn-register">提交</button>
