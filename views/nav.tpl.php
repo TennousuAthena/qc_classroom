@@ -35,16 +35,15 @@ $usercenter = new usercenter();
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
                         <a href="###"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
-                        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dl class="layui-nav-child">
                             <dd><a href="">创建课程</a></dd>
-                            <dd><a href="">创建直播</a></dd>
                         </dl>
                     <?php } ?>
-                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\" target='_blank'";?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\"" ;?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="<?php if(!$Is_login){ echo "/user/login\" data-pjax=\"false\""; }else{?>###<?php } ?>">
+                        <a href="<?php if(!$Is_login){ echo "/user/login\" "; }else{?>###<?php } ?>">
                             <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
                             <?php echo $Uinfo['username']; ?>
                         </a>
@@ -53,12 +52,12 @@ $usercenter = new usercenter();
                                 <?php if($usercenter->get_user_group($conn, $Uid) == 1){ ?>
                             <dd><a href="###" lay-filter="become_teacher">成为老师</a> </dd>
                                 <?php } ?>
-                            <dd><a href="###">基本资料</a></dd>
-                            <dd><a href="###">安全设置</a></dd>
-                            <dd><a href="/user/logout" data-pjax="false">退出登录</a></dd>
+                            <dd><a href="###"><i class="layui-icon layui-icon-user"></i> 基本资料</a></dd>
+                            <dd><a href="###"><i class="layui-icon layui-icon-auz"></i> 安全设置</a></dd>
+                            <dd><a href="/user/logout" data-pjax="false"><i class="layui-icon layui-icon-close-fill"></i> 退出登录</a></dd>
                             <?php }else{ ?>
-                            <dd><a href="/user/login" data-pjax="false">登录</a></dd>
-                            <dd><a href="/user/register" data-pjax="false">注册</a></dd>
+                            <dd><a href="/user/login"><i class="layui-icon layui-icon-username"></i> 登录</a></dd>
+                            <dd><a href="/user/register"><i class="layui-icon layui-icon-release"></i> 注册</a></dd>
                             <?php } ?></dl>
                     </li>
                 </ul>

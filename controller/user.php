@@ -23,6 +23,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     header('Cache-Control: no-cache, must-revalidate');
     header('Pragma: no-cache');
 }
+//禁止搜索引擎索引
+header("Robots: noindex,nofollow");
 switch ($Parameters['method']){
     case '':
         {

@@ -26,6 +26,7 @@
 - 验证码提供： [Geetest](https://www.geetest.com/)
 - 加载技术 [pjax](https://github.com/qcminecraft/jquery-pjax)
 - 进度条 [Nprogress](https://github.com/rstacruz/nprogress)
+- Markdown编辑器 [editor.md](https://github.com/pandao/editor.md)
 
 ## 许可
 本项目使用 WTFPL 协议进行许可，您可以做任何您想做的事，包括但不限于：

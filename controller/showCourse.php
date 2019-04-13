@@ -42,7 +42,7 @@ if(!$Errinfo) {
             </div>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         <?php if($data['type']==2 && $data['file_url']){   ?>
         const vid = '//<?php echo $Config['domain']['video'].$base_url ?>';
         const dp = new DPlayer({
@@ -79,11 +79,25 @@ if(!$Errinfo) {
                 url: '//<?php echo $Config['domain']['video'] . $data['subtitle_url'] ?>'
             },<?php } ?>
         });
-        <?php if(!$Is_login){
-            echo "dp.notice('登录后解锁原画画质哦~', 5000);";
-        }?>
+        <?php }else if($data['type']==1 && @$data['stream_id']){ ?>
+
+        const dp = new DPlayer({
+            container: document.getElementById('player'),
+            screenshot: true,
+            theme: '#5FB878',
+            mutex: true,
+            preload: 'auto',
+            logo: '/assets/img/logo_.png',
+            video: {
+                url: '//<?php echo $Config["domain"]["live_play"] ?>/live/<?php echo $data['stream_id']?>.m3u8'
+            }
+        });
+        $('.dplayer-bar-wrap').remove();
+        $('.dplayer-time').addClass('layui-anim layui-anim-scaleSpring layui-anim-loop');
+        $('.dplayer-time').html('<span class="dplayer-dtime">📺直播中...</span>');
         <?php } ?>
 
+        <?php if(!$Is_login) echo "dp.notice('登录后解锁原画画质哦~', 5000);";?>
         $('.dplayer-logo').addClass('player-logo');
         $('.dplayer-logo').removeClass('dplayer-logo');
     </script>
