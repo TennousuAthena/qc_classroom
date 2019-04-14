@@ -31,6 +31,9 @@
                     $.pjax.reload('#pjax-content', '/');
                 }, 2500);
             }
+            if(window.location.pathname.indexOf("/note") === 0){
+                load_note();
+            }
         }
 
     };
@@ -73,6 +76,9 @@
                 });
             });
         }
+    }
+    function load_note(){
+        $.getScript(Static + 'js/editor.js')
     }
 
     window.Qc = Qc;
