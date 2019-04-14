@@ -53,29 +53,14 @@ switch ($Parameters['mod']){
             );
             $result = $GtSdk->success_validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode'], $data);
             if (!$result) {
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -105,
-                        'msg'    => '验证码信息错误'
-                    ];
-                    die(json_encode($return));
-                }
+                    die(json_encode(['status' => 'failed', 'code'   => -105, 'msg' => '验证码信息错误']));
+            }
             if (!preg_match('/^1[34578]\d{9}$/', $_POST['phoneNumber'])) {
-                $return = [
-                    'status' => 'failed',
-                    'code'   => -111,
-                    'msg'    => '手机号不合法'
-                ];
-                die(json_encode($return));
+                die(json_encode(['status' => 'failed', 'code'   => -111, 'msg' => '手机号不合法']));
             }
             $data = $conn->query('SELECT * FROM `qc_user` WHERE `phone` = \''. $_POST['phoneNumber'] .'\' LIMIT 1');
             if($data->num_rows > 0){
-                $return = [
-                    'status' => 'failed',
-                    'code'   => -205,
-                    'msg'    => '手机号已被注册'
-                ];
-                die(json_encode($return));
+                die(json_encode(['status' => 'failed', 'code'   => -205, 'msg' => '手机号已被注册']));
             }
 
             $verifyCode = rand(100000, 999999);
@@ -87,35 +72,19 @@ switch ($Parameters['mod']){
             $lid = $conn->query('SELECT * FROM `qc_phone_sms` WHERE `target` = \''. $_POST['phoneNumber'] .'\' ORDER BY `qc_phone_sms`.`lid` DESC')->fetch_assoc()['lid'];
 
             if(strstr($result, "OK")){
-                $return = [
-                    'status' => 'success',
-                    'code'   => 110,
-                    'msg'    => '成功发送短信',
-                    'lid'    => $lid,
-                ];
-                die(json_encode($return));
+                die(json_encode(['status' => 'success', 'code' => 110, 'msg'  => '成功发送短信', 'lid' => $lid,]));
             }else{
-                $return = [
-                    'status' => 'failed',
-                    'code'   => -110,
-                    'msg'    => '短信无法正常发送'
-                ];
-                die(json_encode($return));
+                die(json_encode(['status' => 'failed', 'code'   => -110, 'msg' => '短信无法正常发送']));
             }
         }else{
-            $return = [
-                'status' => 'failed',
-                'code'   => -98,
-                'msg'    => '错误的请求方法'
-            ];
-            die(json_encode($return));
+            die(json_encode(['status' => 'failed', 'code' => -98, 'msg' => '错误的请求方法']));
         }
         break;
     }
     case 'analytics':{
         // **********************
         // * Author: stneng
-        // * Introduction: https://stneng.com/google-analytics-异步请求（服务端请求）/
+        // * Introduction: https://stneng.com/google-analytics-%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%B7%E6%B1%82%EF%BC%89/
         // **********************
         $tid='UA-100755509-9';
 
@@ -163,11 +132,6 @@ switch ($Parameters['mod']){
         break;
     }
     default:{
-        $return = [
-            'status' => 'failed',
-            'code'   => -99,
-            'msg'    => '未知模块'
-        ];
-        die(json_encode($return));
+        die(json_encode(['status'=>'failed', 'code' => -99, 'msg' => '未知模块']));
     }
 }

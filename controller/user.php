@@ -46,50 +46,25 @@ switch ($Parameters['method']){
                 }
                 //检查用户名
                 if(!preg_match('/^[a-zA-Z0-9_-]{4,16}$/', $_POST['username'])){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -201,
-                        'msg'    => '用户名不合法'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code'  => -201, 'msg' => '用户名不合法']));
                 }
                 //用户名查重
                 $data = $conn->query('SELECT * FROM `qc_user` WHERE `username` = \''. $_POST['username'] .'\' LIMIT 1');
                 if($data->num_rows > 0){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -204,
-                        'msg'    => '用户名已被占用'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -204, 'msg' => '用户名已被占用']));
                 }
                 //检查密码
                 if(!preg_match('/^.*(?=.{9,})(?=.*\d)(?=.*[A-z]).*$/', $_POST['password'])){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -202,
-                        'msg'    => '密码不合法'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -202, 'msg' => '密码不合法']));
                 }
                 //检查年级
                 if(!$_POST['edu'] > 6 && !$_POST['edu'] <=0){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -203,
-                        'msg'    => '年级不合法'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -203, 'msg' => '年级不合法']));
                 }
                 //电话号码查重
                 $data = $conn->query('SELECT * FROM `qc_user` WHERE `phone` = \''. $_POST['phone'] .'\' LIMIT 1');
                 if($data->num_rows > 0){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -205,
-                        'msg'    => '手机号已被注册'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -205, 'msg' => '手机号已被注册']));
                 }
                 //从数据库中查询lid,电话号,验证码，和用户输入进行比对
                 $data = $conn->query('SELECT * FROM `qc_phone_sms` WHERE `lid` = \''. $_POST['lid'] .'\' LIMIT 1')->fetch_assoc();
@@ -97,24 +72,15 @@ switch ($Parameters['method']){
                 $time = time() - 100;
                 $row = $conn->query('SELECT * FROM `qc_log` WHERE `result` < \'0\' AND `ip` = \''. get_real_ip() .'\' AND `time` > \''. $time .'\' LIMIT 10');
                 if($row->num_rows > 5){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -208,
-                        'msg'    => '尝试次数过多'
-                    ];
                     $usercenter->write_log($conn, 'request_too_frequent', ' ', $Uid, '-208');
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed',  'code' => -208,  'msg' => '尝试次数过多'
+                    ]));
                 }
 
                 if($_POST['phone'] == $data['target'] && $_POST['code'] == $data['code'] && $data['flag'] != 1){
                     //验证码是否过期
                     if(time() - $data['sendTime'] > 10 * 60){
-                        $return = [
-                            'status' => 'failed',
-                            'code'   => -206,
-                            'msg'    => '验证码过期'
-                        ];
-                        die(json_encode($return));
+                        die(json_encode(['status' => 'failed', 'code'=> -206, 'msg' => '验证码过期']));
                     }
                     //验证成功，把数据插flag
                     $conn->query('UPDATE `qc_phone_sms` SET `flag` = \'1\' WHERE `lid` = \''. $_POST['lid'] .'\';');
@@ -128,22 +94,12 @@ VALUES (\''. $_POST['username'] .'\', \''. $pass .'\', \''. time() .'\', \'\', \
                     $conn->query('INSERT INTO `qc_user_detail` (`uid`, `realname`, `education`, `grade`)
 VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
 
-                    $return = [
-                        'status' => 'success',
-                        'code'   => 200,
-                        'msg'    => '注册成功'
-                    ];
                     $usercenter->write_log($conn, 'register', 'registered successfully', $data['uid'], '1');
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'success', 'code' => 200, 'msg' => '注册成功']));
 
                 }else{
                     $usercenter->write_log($conn, 'wrong_sms_code', ' ', $Uid, '-207');
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -207,
-                        'msg'    => '短信验证码错误'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -207, 'msg' => '短信验证码错误']));
                 }
 
             }
@@ -161,20 +117,10 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
 
                 //检查输入
                 if($_POST['username'] == '' && $_POST['password'] == ''){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -103,
-                        'msg'    => '用户名或密码为空'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -103, 'msg' => '用户名或密码为空']));
                 }
                 if($_POST['geetest_challenge'] == '' && $_POST['geetest_validate']=='' && $_POST['geetest_seccode'] == ''){
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -104,
-                        'msg'    => '验证码信息错误'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -104, 'msg' => '验证码信息错误']));
                 }
 
                 //验证geetest
@@ -186,23 +132,13 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                 );
                 $result = $GtSdk->success_validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode'], $user_info);
                 if (!$result) {
-                    $return = [
-                            'status' => 'failed',
-                            'code'   => -105,
-                            'msg'    => '验证码信息错误'
-                        ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -105,  'msg' => '验证码信息错误']));
                 }
 
                 //检查注入
                 inject_check($_POST['password']);
                 if(!inject_check($_POST['username']) || !inject_check($_POST['password'])){
-                $return = [
-                    'status' => 'failed',
-                    'code'   => -10,
-                    'msg'    => '输入含有非法参数'
-                ];
-                die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -10, 'msg' => '输入含有非法参数']));
                 }
                 // 创建连接
                 $conn = new mysqli($Config["database"]["address"], $Config["database"]["username"], $Config["database"]["password"],
@@ -219,21 +155,11 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     //手机
                     $sqlResult = $conn->query("SELECT * FROM `qc_user` WHERE `phone` = '". $_POST['username']."'")->fetch_assoc();
                 }else{
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -101,
-                        'msg'    => '用户不存在'
-                    ];
                     $usercenter->write_log($conn, 'user_does_not_exist', 'Username: '.@$_POST['username'], '0', '-101');
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -101, 'msg' => '用户不存在']));
                 }
                 //验证密码是否正确
                 if(password_verify($_POST['password'], $sqlResult['password'])){
-                    $return = [
-                        'status' => 'success',
-                        'code'   => 1000,
-                        'msg'    => '登录成功，将在3秒后前往用户中心',
-                    ];
                     $usercenter->write_log($conn, 'login', 'login successfully', $sqlResult['uid'], 1);
                     if($_POST['remember'] == 0){
                         $Expire = 0;
@@ -243,15 +169,10 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     $usercenter->set_cookie('uid', $sqlResult['uid'], $Expire , $Config["website"]["https"]);
                     $usercenter->set_cookie('ukey', password_hash($sqlResult['uid'] . time()+3600*24*30 , PASSWORD_DEFAULT), $Expire , $Config["website"]["https"]);
                     $usercenter->set_cookie('expire_time', time()+3600*24*30, $Expire , $Config["website"]["https"]);
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'success', 'code' => 1000, 'msg' => '登录成功，将在3秒后前往用户中心',]));
                 }else{
                     $usercenter->write_log($conn, 'wrong_psw', 'Username: '.@$_POST['username'], '0', '-1');
-                    $return = [
-                        'status' => 'failed',
-                        'code'   => -102,
-                        'msg'    => '错误的密码'
-                    ];
-                    die(json_encode($return));
+                    die(json_encode(['status' => 'failed', 'code' => -102, 'msg' => '密码有误，请重新输入']));
                 }
             }
             $conn->close();
@@ -282,15 +203,9 @@ VALUES (\''. $data['uid'] .'\', \'\', \''. $_POST['edu'] .'\', \'\');');
                     <div class="layui-card-body">
                         <p>您的账户已安全退出</p>
                         <br />
-                        <p>将在3秒后回到<a href="/" data-pjax="false">首页</a>...</p>
-                        <p class="layui-word-aux">不要吐槽青草前端写得丑，我尽力了好吗QAQ...</p>
+                        <p>将在3秒后回到<a href="/">首页</a>...</p>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    setTimeout(function () {
-                        window.location.href='/';
-                    }, 3000)
-                </script>
                 <?php
             }
             break;

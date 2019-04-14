@@ -94,12 +94,7 @@ if ($NotFound === true && $_SERVER['REQUEST_METHOD']== 'GET') {
     die();
 }elseif ($NotFound === true){
     http_response_code(404);
-    $return = [
-        'status' => 'failed',
-        'code'   => -99,
-        'msg'    => '未知模块-'
-    ];
-    die(json_encode($return));
+    die(json_encode(['status' => 'failed', 'code'=>-99, 'msg'=>'未知模块-']));
 }
 if(!file_exists("controller/".$UrlPath.".php")){
     require_once("controller/http_error.php");
