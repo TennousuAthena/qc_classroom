@@ -31,8 +31,6 @@ $usercenter = new usercenter();
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/') echo "layui-this" ?>"><a href="/"><em class="layui-icon layui-icon-home"> </em>首页</a></li>
                     <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/createCourse') echo "layui-this" ?>"><a href="/teacher/createCourse"><em class="layui-icon layui-icon-add-1"> </em>创建课程</a></li>
-                    <?php }?>
-                    <?php if($usercenter->get_user_group($conn, $Uid) > 1){ ?>
                         <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/teacher/') echo "layui-this" ?>">
                         <a href="###"><em class="layui-icon layui-icon-username"> </em> 教师中心</a>
                         <dl class="layui-nav-child">
@@ -40,6 +38,8 @@ $usercenter = new usercenter();
                         </dl>
                     <?php } ?>
                     <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/user/myCourse') echo "layui-this" ?>"><a href="<?php if($Is_login)echo "/user/myCourse"; else echo "/user/login\"" ;?>"><em class="layui-icon layui-icon-list"> </em> 我的课程</a></li>
+                <?php if($Is_login)?>
+                    <li class="layui-nav-item <?php if($_SERVER['REQUEST_URI'] === '/note/') echo "layui-this" ?>"><a href="/note/"><em class="layui-icon layui-icon-file-b"> </em> 我的笔记</a></li>
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
@@ -50,7 +50,7 @@ $usercenter = new usercenter();
                         <dl class="layui-nav-child" id="nav-user-options">
                             <?php if($Is_login){ ?>
                                 <?php if($usercenter->get_user_group($conn, $Uid) == 1){ ?>
-                            <dd><a href="###" lay-filter="become_teacher">成为老师</a> </dd>
+                            <dd><a href="###">成为老师</a> </dd>
                                 <?php } ?>
                             <dd><a href="###"><i class="layui-icon layui-icon-user"></i> 基本资料</a></dd>
                             <dd><a href="###"><i class="layui-icon layui-icon-auz"></i> 安全设置</a></dd>
