@@ -1,6 +1,8 @@
 # 青草课堂
 [![CircleCI](https://circleci.com/gh/qcminecraft/qc_classroom.svg?style=svg&circle-token=e33f17a2b23f23e80f9d31d6e34b0ff898fd3ff4)](https://circleci.com/gh/qcminecraft/qc_classroom)
-青草课堂——网络在线教育智能直播课堂解决方案
+[![Maintainability](https://api.codeclimate.com/v1/badges/a3bd89b0df255544919b/maintainability)](https://codeclimate.com/github/qcminecraft/qc_classrom/maintainability)
+
+> 青草课堂——网络在线教育智能直播课堂解决方案
 
 [![Telegram](https://img.shields.io/badge/Telegram-Join--the--chat-green.svg?logo=telegram&style=for-the-badge)](https://t.me/joinchat/IoZlgxelV02lQRfJSxDCtA)
 ![PHP](https://img.shields.io/badge/PHP-v5.6-green.svg?logo=php&style=for-the-badge)
