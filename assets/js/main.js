@@ -22,6 +22,15 @@
         boot: function () {
             _ga(window, document, navigator);
             load_layui();
+            //退出登录
+            if(window.location.pathname === '/user/logout'){
+                $("#nav-user-info").attr('href', '/user/login');
+                $("#nav-user-name").html("未登录用户");
+                $("#nav-user-avatar").attr('src', Static + 'img/akari.jpg');
+                setTimeout(function () {
+                    $.pjax.reload('#pjax-content', '/');
+                }, 2500);
+            }
         }
 
     };

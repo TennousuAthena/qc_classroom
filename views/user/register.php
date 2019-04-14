@@ -67,7 +67,7 @@ if($Is_login){
             <a class="layui-form" href="/user/login">已有账户？点击登录</a>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button type="button" class="layui-btn layui-btn-disabled" id="btn-register">提交</button>
+                    <button type="button" class="layui-btn layui-btn-disabled" id="btn-register" title="请先验证手机号码">提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
                 </div>
             </div>

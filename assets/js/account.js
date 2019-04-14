@@ -13,13 +13,13 @@ switch (window.location.pathname) {
                 captchaObj.reset();
             });
             $('#btn-login').click(function() {
-                var result = captchaObj.getValidate();
+                const result = captchaObj.getValidate();
                 if (!result) {
                     return layer.msg("请完成验证", {icon:2})
                 }
-                var username = $('#username').val();
-                var password = $("#password").val();
-                var remember = $("div.layui-form-switch")[0].classList[2] == 'layui-form-onswitch' ? 1 : 0;
+                let username = $('#username').val();
+                let password = $("#password").val();
+                let remember = $("div.layui-form-switch")[0].classList[2] == 'layui-form-onswitch' ? 1 : 0;
                 if (username !== "" && password !== "" && (remember===1 || remember===0)) {
                     layer.load(2);
                     $.ajax({
@@ -53,7 +53,7 @@ switch (window.location.pathname) {
                                 //登录成功
                                 layer.msg(data.msg, {icon:1});
                                 setTimeout(function () {
-                                    location.reload();
+                                    $.pjax.reload('#pjax-content')
                                 }, 2000)
                             }
                         }})
@@ -109,19 +109,20 @@ switch (window.location.pathname) {
                             layer.msg("短信已发送至您的手机，请查收", {icon:1});
                             $("#lid").val(data.lid);
                             $("#btn-register").removeClass("layui-btn-disabled");
+                            $("#btn-register").attr("title","");
                             $("#sendSmsCode").addClass("layui-btn-disabled");
                             $("#sendSmsCode").attr("title","技能CD中...");
                             (function() {
-                                var time = 60;
-                                var p = document.getElementById("sendSmsCode");
-                                var set = setInterval(function() {
+                                let time = 60;
+                                let p = document.getElementById("sendSmsCode");
+                                let set = setInterval(function () {
                                     time--;
                                     p.innerHTML = "重新发送验证码(" + time + "s)";
-                                    if(time === 0) {
+                                    if (time === 0) {
                                         p.innerHTML = "重新发送验证码";
                                         clearInterval(set);
                                         $("#sendSmsCode").removeClass("layui-btn-disabled");
-                                        $("#sendSmsCode").attr("title","")
+                                        $("#sendSmsCode").attr("title", "")
                                     }
                                 }, 1000);
                             })()

@@ -43,18 +43,18 @@ $usercenter = new usercenter();
                 </ul>
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="<?php if(!$Is_login){ echo "/user/login\" "; }else{?>###<?php } ?>">
-                            <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img">
-                            <?php echo $Uinfo['username']; ?>
+                        <a href="<?php if(!$Is_login){ echo "/user/login"; }else{?>###<?php } ?>" id="nav-user-info">
+                            <img src="<?php echo $Config["website"]["static"] . $usercenter->get_avatar($Uid, $conn); ?>" class="layui-nav-img" id="nav-user-avatar"  alt="头像">
+                            <em id="nav-user-name"><?php echo $Uinfo['username']; ?></em>
                         </a>
-                        <dl class="layui-nav-child">
+                        <dl class="layui-nav-child" id="nav-user-options">
                             <?php if($Is_login){ ?>
                                 <?php if($usercenter->get_user_group($conn, $Uid) == 1){ ?>
                             <dd><a href="###" lay-filter="become_teacher">成为老师</a> </dd>
                                 <?php } ?>
                             <dd><a href="###"><i class="layui-icon layui-icon-user"></i> 基本资料</a></dd>
                             <dd><a href="###"><i class="layui-icon layui-icon-auz"></i> 安全设置</a></dd>
-                            <dd><a href="/user/logout" data-pjax="false"><i class="layui-icon layui-icon-close-fill"></i> 退出登录</a></dd>
+                            <dd><a href="/user/logout"><i class="layui-icon layui-icon-close-fill"></i> 退出登录</a></dd>
                             <?php }else{ ?>
                             <dd><a href="/user/login"><i class="layui-icon layui-icon-username"></i> 登录</a></dd>
                             <dd><a href="/user/register"><i class="layui-icon layui-icon-release"></i> 注册</a></dd>
