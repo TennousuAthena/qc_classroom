@@ -7,7 +7,7 @@
 [![Telegram](https://img.shields.io/badge/Telegram-Join--the--chat-green.svg?logo=telegram&style=for-the-badge)](https://t.me/joinchat/IoZlgxelV02lQRfJSxDCtA)
 ![PHP](https://img.shields.io/badge/PHP-v5.6-green.svg?logo=php&style=for-the-badge)
 
-![使用截图（初步）](https://i.loli.net/2019/02/26/5c754e7372bf6.png)
+![介绍图片](https://i.loli.net/2019/04/17/5cb6fff1cb1c6.png)
 
 **(辽宁省第三十四届青少年创新大赛参赛作品)**
 ## 开发&使用 文档
