@@ -9,7 +9,6 @@
 
 ![介绍图片](https://i.loli.net/2019/04/17/5cb6fff1cb1c6.png)
 
-**(辽宁省第三十四届青少年创新大赛参赛作品)**
 ## 开发&使用 文档
 [Gitbook](https://qctech.gitbook.io/qc-class/-LYeG6RIfFBKXqnZjrlm/)
 
